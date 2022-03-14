@@ -1,0 +1,24 @@
+@use "../MenuItem" as *;
+.submenu {
+  margin: 0.5rem 0;
+  width: 20rem;
+}
+
+.submenu a {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: $color-fg-menu-item;
+  transition: all 0.3s;
+
+  &:hover {
+    background: $color-bg-menu-item;
+  }
+
+  span {
+    font-size: small;
+    color: $color-fg-category-item;
+    margin-bottom: 0.25rem;
+  }
+}

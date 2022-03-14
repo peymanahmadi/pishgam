@@ -1,0 +1,23 @@
+@use "../MenuItem" as *;
+
+.megamenuitem_container {
+  position: relative;
+  .submenu {
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    transform: translateY(95%);
+    background: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.24);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.24);
+    pointer-events: none;
+    opacity: 0;
+    transition: all ease-in-out 300ms;
+  }
+  .submenu_active {
+    opacity: 1;
+    pointer-events: initial;
+    transform: translateY(100%);
+  }
+}
