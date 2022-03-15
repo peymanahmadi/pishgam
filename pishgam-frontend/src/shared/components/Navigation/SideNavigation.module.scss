@@ -1,0 +1,43 @@
+.side-navigation {
+  padding: 5rem 1rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+      padding: 0.5rem 0.5rem;
+      color: #000;
+      transition: all 0.3s;
+      &:hover {
+        background: #d4d4d4;
+      }
+    }
+
+    .submenu {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      padding: 0.5rem 0.5rem;
+      color: #000;
+
+      .submenu-item {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0;
+      }
+    }
+  }
+
+  .things-button {
+    display: flex;
+    justify-content: center;
+  }
+}

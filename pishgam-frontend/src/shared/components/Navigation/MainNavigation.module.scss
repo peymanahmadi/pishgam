@@ -1,16 +1,14 @@
 .navbar {
   background: white;
-  height: 85px;
-  border-bottom: 1px solid #ccc;
+  height: 4.5rem;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
-  max-height: 85px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   position: sticky;
-  z-index: 100;
   top: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   user-select: none;
+  border-bottom: 1px solid #ccc;
+  z-index: 5;
 
   .menubar {
     display: flex;
@@ -19,8 +17,11 @@
     .hamburger {
       margin-left: 20px;
       display: none;
-
       cursor: pointer;
+
+      svg {
+        font-size: 3rem;
+      }
 
       @media screen and (max-width: 960px) {
         display: inline-block;
@@ -55,22 +56,6 @@
     .navmenu {
       margin-left: 50px;
       display: flex;
-    }
-
-    button {
-      font: inherit;
-      background: #009036;
-      padding: 0.5rem 1.5rem;
-      border: 1px solid #009036;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-      transition: all 0.3s;
-
-      &:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
-      }
     }
   }
 }
