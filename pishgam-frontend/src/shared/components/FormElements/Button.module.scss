@@ -10,8 +10,8 @@
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   transition: all 0.3s;
-}
 
-.button:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+  }
 }

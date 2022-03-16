@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Company from "./company/pages/Company";
+import Dashboard from "./dashboard/pages/Dashboard";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/company/whoweare" element={<Company />} />
+          <Route path="/dashboard/:userID" element={<Dashboard />} />
           {/* <main> */}
           {/* <Route path="/" element={<Home />} />
         <Route path="/products/batchingsystem" element={<BatchingSystem />} />

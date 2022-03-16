@@ -48,7 +48,7 @@ const MainNavigation = () => {
             <MegaMenuItem title="Startup Projects" data={ProjectsData} />
             <MegaMenuItem title="Company" data={CompanyData} />
           </div>
-          <NavLink to="dashboard">
+          <NavLink to="dashboard/:userID">
             <Button>Things Dashboard</Button>
           </NavLink>
         </div>

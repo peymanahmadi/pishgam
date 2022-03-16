@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    display: flex;
+
+    h2 {
+      font-weight: 400;
+    }
+
+    .blob {
+      align-self: center;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .value {
+    display: flex;
+
+    h2 {
+      font-weight: 400;
+    }
+
+    span {
+      background: #1d3557;
+      color: #f1faee;
+      align-self: flex-end;
+      margin-left: 0.25rem;
+      padding: 0.2rem;
+      border-radius: 5px;
+      font-weight: 300;
+    }
+  }
+}
