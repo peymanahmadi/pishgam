@@ -23,4 +23,19 @@ const getThingByID = (req, res, next) => {
   res.json({ thing });
 };
 
+const createThing = (req, res, next) => {
+  const { id, colName, title } = req.body;
+
+  const createdThing = {
+    id,
+    colName,
+    title,
+  };
+
+  DUMMY_THINGS.push(createdThing);
+
+  res.status(201).json({ thing: createdThing });
+};
+
 exports.getThingByID = getThingByID;
+exports.createThing = createThing;
