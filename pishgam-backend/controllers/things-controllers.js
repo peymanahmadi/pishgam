@@ -37,5 +37,26 @@ const createThing = (req, res, next) => {
   res.status(201).json({ thing: createdThing });
 };
 
+const updateThing = (req, res, next) => {
+  const { title } = req.body;
+  const tid = req.params.tid;
+
+  const updatedThing = { ...DUMMY_THINGS.find((t) => t.id === tid) };
+  const thingIndex = DUMMY_THINGS.findIndex((t) => t.id === tid);
+  updateThing.title = title;
+
+  DUMMY_THINGS[thingIndex] = updateThing;
+
+  res.status(200).json({ thing: updatedThing });
+};
+
+const deleteThing = (req, res, next) => {
+  const tid = req.params.tid;
+  DUMMY_THINGS = DUMMY_THINGS.find((t) => t.id !== tid);
+  res.status(200).json({ message: "Thing deleted." });
+};
+
 exports.getThingByID = getThingByID;
 exports.createThing = createThing;
+exports.updateThing = updateThing;
+exports.deleteThing = deleteThing;

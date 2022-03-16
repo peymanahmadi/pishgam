@@ -6,5 +6,7 @@ const router = express.Router();
 
 router.get("/:tid", thingsControllers.getThingByID);
 router.post("/", thingsControllers.createThing);
+router.patch("/:tid", thingsControllers.updateThing);
+router.delete("/:tid", thingsControllers.deleteThing);
 
 module.exports = router;
