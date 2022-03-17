@@ -1,3 +1,5 @@
+const { validationResult } = require("express-validator");
+
 const HttpError = require("../models/http-error");
 
 const DUMMY_THINGS = [
@@ -39,6 +41,10 @@ const getThingsByUserID = (req, res, next) => {
 };
 
 const createThing = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new HttpError("Invalid inputs passed, please check your data.", 422);
+  }
   const { id, colName, title } = req.body;
 
   const createdThing = {
@@ -53,6 +59,11 @@ const createThing = (req, res, next) => {
 };
 
 const updateThing = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new HttpError("Invalid inputs passed, please check your data.", 422);
+  }
+
   const { title } = req.body;
   const tid = req.params.tid;
 
@@ -67,6 +78,10 @@ const updateThing = (req, res, next) => {
 
 const deleteThing = (req, res, next) => {
   const tid = req.params.tid;
+
+  if (!DUMMY_THINGS.find((t) => t.id === tid)) {
+    throw new HttpError("Could not find a thing for that id.", 404);
+  }
   DUMMY_THINGS = DUMMY_THINGS.find((t) => t.id !== tid);
   res.status(200).json({ message: "Thing deleted." });
 };
