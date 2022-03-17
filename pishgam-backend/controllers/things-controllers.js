@@ -5,6 +5,8 @@ const DUMMY_THINGS = [
     id: "1",
     colName: "thing202203001",
     title: "Silo 1",
+    creatorID: "u1",
+    userID: ["u1", "u2"],
   },
 ];
 
@@ -21,6 +23,19 @@ const getThingByID = (req, res, next) => {
   }
 
   res.json({ thing });
+};
+
+const getThingsByUserID = (req, res, next) => {
+  const userID = req.params.uid;
+  const things = DUMMY_THINGS.filter((t) => (t.userID = userID));
+
+  if (!things || things.length === 0) {
+    return next(
+      new HttpError("Could not find things for the provided user id.", 404)
+    );
+  }
+
+  res.json({ things });
 };
 
 const createThing = (req, res, next) => {
@@ -57,6 +72,7 @@ const deleteThing = (req, res, next) => {
 };
 
 exports.getThingByID = getThingByID;
+exports.getThingsByUserID = getThingsByUserID;
 exports.createThing = createThing;
 exports.updateThing = updateThing;
 exports.deleteThing = deleteThing;
