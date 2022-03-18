@@ -1,0 +1,22 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 1rem 0.25rem;
+    text-align: center;
+  }
+
+  img {
+  }
+
+  p {
+    font-family: "Montserrat", sans-serif;
+    margin: 1rem 0.25rem;
+  }
+}
