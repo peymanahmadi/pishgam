@@ -1,9 +1,9 @@
 const express = require("express");
-
-const HttpError = require("./models/http-error");
+const mongoose = require("mongoose");
 
 const thingsRoutes = require("./routes/things-routes");
 const usersRoutes = require("./routes/users-routes");
+const HttpError = require("./models/http-error");
 
 const app = express();
 
@@ -25,4 +25,11 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occured!" });
 });
 
-app.listen(5000);
+mongoose
+  .connect("mongodb://localhost:27017/pishgam")
+  .then(() => {
+    app.listen(5000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
