@@ -8,9 +8,9 @@ const WhoWeAre = () => {
         <div className={styles.whoweare}>
           <h1>Our Mission</h1>
           <p>
-            Pishgam empowers Animal Husbandries and Poultry Farms to create,
-            transform, and disrupt industries by unleashing the power of
-            software and data
+            Pishgam empowers cattle and poultry farms become digitalized and
+            data-driven, enabling then to make smart decision to improve animal
+            health
           </p>
         </div>
         <div className={styles.image}>
