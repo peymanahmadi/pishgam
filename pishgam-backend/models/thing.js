@@ -6,6 +6,7 @@ const thingSchema = new Schema(
   {
     colName: { type: String, required: true },
     title: { type: String, required: true },
+    description: { type: String },
     categoryID: { type: String },
     apiWriteKey: { type: String, required: true },
     apiReadKey: { type: String, required: true },
@@ -14,7 +15,7 @@ const thingSchema = new Schema(
     creator: { type: String, required: true },
     users: [String],
   },
-  { timestamps }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Thing", thingSchema);

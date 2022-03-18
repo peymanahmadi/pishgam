@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-
+const Thing = require("../models/thing");
 const HttpError = require("../models/http-error");
 
 const DUMMY_THINGS = [
@@ -40,20 +40,44 @@ const getThingsByUserID = (req, res, next) => {
   res.json({ things });
 };
 
-const createThing = (req, res, next) => {
+const createThing = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     throw new HttpError("Invalid inputs passed, please check your data.", 422);
   }
-  const { id, colName, title } = req.body;
-
-  const createdThing = {
-    id,
+  const {
     colName,
     title,
-  };
+    description,
+    categoryID,
+    apiWriteKey,
+    apiReadKey,
+    enabled,
+    dataLifeCycle,
+    creator,
+    users,
+  } = req.body;
 
-  DUMMY_THINGS.push(createdThing);
+  const createdThing = new Thing({
+    colName,
+    title,
+    description,
+    categoryID,
+    apiWriteKey,
+    apiReadKey,
+    enabled,
+    dataLifeCycle,
+    creator,
+    users,
+  });
+
+  try {
+    await createdThing.save();
+  } catch (err) {
+    // const error = new HttpError("Creating thing failed, please try again", 500);
+    const error = new HttpError(err, 500);
+    return next(error);
+  }
 
   res.status(201).json({ thing: createdThing });
 };
