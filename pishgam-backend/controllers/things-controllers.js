@@ -104,22 +104,43 @@ const createThing = async (req, res, next) => {
   res.status(201).json({ thing: createdThing });
 };
 
-const updateThing = (req, res, next) => {
+const updateThing = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     throw new HttpError("Invalid inputs passed, please check your data.", 422);
   }
 
-  const { title } = req.body;
+  const { title, description, categoryID, enabled, users } = req.body;
   const tid = req.params.tid;
 
-  const updatedThing = { ...DUMMY_THINGS.find((t) => t.id === tid) };
-  const thingIndex = DUMMY_THINGS.findIndex((t) => t.id === tid);
-  updateThing.title = title;
+  let thing;
+  try {
+    thing = await Thing.findById(tid);
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not update thing.",
+      500
+    );
+    return next(error);
+  }
 
-  DUMMY_THINGS[thingIndex] = updateThing;
+  thing.title = title;
+  thing.description = description;
+  thing.categoryID = categoryID;
+  thing.enabled = enabled;
+  thing.users = users;
 
-  res.status(200).json({ thing: updatedThing });
+  try {
+    thing = await thing.save();
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not update thing.",
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ thing: thing.toObject({ getters: true }) });
 };
 
 const deleteThing = (req, res, next) => {
