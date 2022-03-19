@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .social-icons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 15%;
+
+    svg {
+      font-size: 1.5rem;
+      color: #333;
+    }
+  }
+
+  .copyright {
+    margin: 1rem;
+    width: 15%;
+    p {
+      text-align: center;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+      font-size: small;
+      color: #333;
+    }
+  }
+}

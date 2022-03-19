@@ -1,5 +1,6 @@
 import Landing from "../components/Landing";
 import Products from "../components/Products";
+import SocialNetworks from "../components/SocialNetworks";
 import ZigZagLayout from "../components/ZigZagLayout";
 import styles from "./Home.module.scss";
 
@@ -12,11 +13,15 @@ const Home = () => {
       <ZigZagLayout bg="#f5f5f8" title="Our Products">
         <Products />
       </ZigZagLayout>
-      <ZigZagLayout bg="#ffffff" title="Products"></ZigZagLayout>
+      <ZigZagLayout bg="#ffffff" title="Our Startup Project"></ZigZagLayout>
       <ZigZagLayout
         bg="#f5f5f8"
         title="What our customers are saying?"
       ></ZigZagLayout>
+      <ZigZagLayout bg="#ffffff" title="Blog"></ZigZagLayout>
+      <ZigZagLayout bg="#f5f5f8">
+        <SocialNetworks />
+      </ZigZagLayout>
     </div>
   );
 };
