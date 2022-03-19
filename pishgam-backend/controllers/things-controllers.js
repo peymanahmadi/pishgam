@@ -12,24 +12,44 @@ const DUMMY_THINGS = [
   },
 ];
 
-const getThingByID = (req, res, next) => {
+const getThingByID = async (req, res, next) => {
   const thingID = req.params.tid;
-  const thing = DUMMY_THINGS.find((t) => {
-    return t.id === thingID;
-  });
 
-  if (!thing) {
-    return next(
-      new HttpError("Could not find a thing for the provided ID", 404)
+  let thing;
+  try {
+    thing = await Thing.findById(thingID);
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not find a thing",
+      500
     );
+    return next(error);
   }
 
-  res.json({ thing });
+  if (!thing) {
+    const error = new HttpError(
+      "Could not find a thing for the provided ID",
+      404
+    );
+    return next(error);
+  }
+
+  res.json({ thing: thing.toObject({ getters: true }) });
 };
 
-const getThingsByUserID = (req, res, next) => {
+const getThingsByUserID = async (req, res, next) => {
   const userID = req.params.uid;
-  const things = DUMMY_THINGS.filter((t) => (t.userID = userID));
+
+  let things;
+  try {
+    things = await Thing.find({ users: userID });
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching things failed, please try again later",
+      500
+    );
+    return next(error);
+  }
 
   if (!things || things.length === 0) {
     return next(
@@ -37,7 +57,9 @@ const getThingsByUserID = (req, res, next) => {
     );
   }
 
-  res.json({ things });
+  res.json({
+    things: things.map((thing) => thing.toObject({ getters: true })),
+  });
 };
 
 const createThing = async (req, res, next) => {
