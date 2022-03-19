@@ -9,19 +9,14 @@ const Home = () => {
   return (
     <div>
       <Landing />
-      <ZigZagLayout title="Products">
+      <ZigZagLayout bg="#f5f5f8" title="Our Products">
         <Products />
       </ZigZagLayout>
-      <div className={styles.products}>
-        <div className={styles.title}>
-          <h1>Products</h1>
-        </div>
-        <div className={styles.prodcard}></div>
-      </div>
-      <div className={styles.company}></div>
-      <div className={styles.aboutus}>
-        <h1>What our customers are saying?</h1>
-      </div>
+      <ZigZagLayout bg="#ffffff" title="Products"></ZigZagLayout>
+      <ZigZagLayout
+        bg="#f5f5f8"
+        title="What our customers are saying?"
+      ></ZigZagLayout>
     </div>
   );
 };

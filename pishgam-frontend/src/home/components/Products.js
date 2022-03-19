@@ -8,15 +8,29 @@ const Products = () => {
   return (
     <div className={styles.container}>
       <ProductCard
-        title="Automatic Batching System"
-        imgAddr={Batching}
+        title="AUTOMATIC BATCHING SYSTEM"
+        // imgAddr={Batching}
         desc="A flexible system to control batching"
         buttonText="LEARN MORE"
       />
-      <Card>
-        <h3>Tank / Silo Weighing System</h3>
-        <Button>LEARN MORE</Button>
-      </Card>
+      <ProductCard
+        title="SILO / TANK WEIGHING SYSTEM"
+        // imgAddr={Batching}
+        desc="A flexible system to control batching"
+        buttonText="LEARN MORE"
+      />
+      <ProductCard
+        title="FEED MILL PLANT AUTOMATION"
+        // imgAddr={Batching}
+        desc="A flexible system to control batching"
+        buttonText="LEARN MORE"
+      />
+      <ProductCard
+        title="IOT KIT"
+        // imgAddr={Batching}
+        desc="A flexible system to control batching"
+        buttonText="LEARN MORE"
+      />
     </div>
   );
 };
