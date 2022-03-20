@@ -143,14 +143,31 @@ const updateThing = async (req, res, next) => {
   res.status(200).json({ thing: thing.toObject({ getters: true }) });
 };
 
-const deleteThing = (req, res, next) => {
+const deleteThing = async (req, res, next) => {
   const tid = req.params.tid;
 
-  if (!DUMMY_THINGS.find((t) => t.id === tid)) {
-    throw new HttpError("Could not find a thing for that id.", 404);
+  let thing;
+  try {
+    thing = await Thing.findById(tid);
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not delete thing.",
+      500
+    );
+    return next(error);
   }
-  DUMMY_THINGS = DUMMY_THINGS.find((t) => t.id !== tid);
-  res.status(200).json({ message: "Thing deleted." });
+
+  try {
+    await thing.remove();
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not delete thing.",
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ message: "Deleted thing." });
 };
 
 exports.getThingByID = getThingByID;
