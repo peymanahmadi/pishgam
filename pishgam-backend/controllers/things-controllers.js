@@ -1,5 +1,7 @@
+const mongoose = require("mongoose");
 const { validationResult } = require("express-validator");
 const Thing = require("../models/thing");
+const User = require("../models/user");
 const HttpError = require("../models/http-error");
 
 const DUMMY_THINGS = [
@@ -73,7 +75,7 @@ const createThing = async (req, res, next) => {
     colName,
     title,
     description,
-    categoryID,
+    categories,
     apiWriteKey,
     apiReadKey,
     enabled,
@@ -86,7 +88,7 @@ const createThing = async (req, res, next) => {
     colName,
     title,
     description,
-    categoryID,
+    categories,
     apiWriteKey,
     apiReadKey,
     enabled,
@@ -95,8 +97,28 @@ const createThing = async (req, res, next) => {
     users,
   });
 
+  let user;
   try {
-    await createdThing.save();
+    user = await user.findById(creator);
+  } catch (err) {
+    const error = new HttpError("Creating place failed, please try again", 500);
+    return next(error);
+  }
+
+  if (!user) {
+    const error = new HttpError("Could not find user for provided id", 404);
+    return next(error);
+  }
+
+  console.log(user);
+
+  try {
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await createdThing.save({ sesseion: sess });
+    user.things.push(createdThing);
+    await user.save({ session: sess });
+    sess.commitTransaction();
   } catch (err) {
     // const error = new HttpError("Creating thing failed, please try again", 500);
     const error = new HttpError(err, 500);
