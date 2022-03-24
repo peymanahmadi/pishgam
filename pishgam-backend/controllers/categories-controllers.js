@@ -5,6 +5,25 @@ const HttpError = require("../models/http-error");
 const Category = require("../models/category");
 const User = require("../models/user");
 
+const getCategories = async (req, res, next) => {
+  let categories;
+  try {
+    categories = await Category.find({});
+  } catch (err) {
+    const errors = new HttpError(
+      "Fetching categories failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+
+  res.json({
+    categories: categories.map((category) =>
+      category.toObject({ getters: true })
+    ),
+  });
+};
+
 const getCategoryByID = async (req, res, next) => {
   const categoryID = req.params.cid;
   let category;
@@ -64,13 +83,13 @@ const createCategory = async (req, res, next) => {
     );
   }
 
-  const { title, description, users, things, creator } = req.body;
+  const { title, description, creator } = req.body;
 
   const createdCategory = new Category({
     title,
     description,
-    users,
-    things,
+    users: [],
+    things: [],
     creator,
   });
 
@@ -79,7 +98,7 @@ const createCategory = async (req, res, next) => {
     user = await User.findById(creator);
   } catch (err) {
     const error = new HttpError(
-      "Creating category failed, please try again",
+      "Creating category failed, please login with a valid user",
       500
     );
     return next(error);
@@ -90,18 +109,18 @@ const createCategory = async (req, res, next) => {
     return next(error);
   }
 
-  console.log(user);
+  createdCategory.users = creator;
 
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
-    await createCategory.save({ session: sess });
-    user.categories.push(createCategory);
+    await createdCategory.save({ session: sess });
+    user.categories.push(createdCategory);
     await user.save({ session: sess });
     sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
-      "Creating category failed, please try again.",
+      "Creating category failed, please try again." + err + " ",
       500
     );
     return next(error);
@@ -177,6 +196,7 @@ const deleteCategory = async (req, res, next) => {
   res.status(200).json({ message: "Deleted category." });
 };
 
+exports.getCategories = getCategories;
 exports.getCategoryByID = getCategoryByID;
 exports.getCategoryByUserID = getCategoryByUserID;
 exports.createCategory = createCategory;

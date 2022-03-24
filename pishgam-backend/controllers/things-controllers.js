@@ -2,17 +2,8 @@ const mongoose = require("mongoose");
 const { validationResult } = require("express-validator");
 const Thing = require("../models/thing");
 const User = require("../models/user");
+const Category = require("../models/category");
 const HttpError = require("../models/http-error");
-
-const DUMMY_THINGS = [
-  {
-    id: "1",
-    colName: "thing202203001",
-    title: "Silo 1",
-    creatorID: "u1",
-    userID: ["u1", "u2"],
-  },
-];
 
 const getThingByID = async (req, res, next) => {
   const thingID = req.params.tid;
@@ -75,33 +66,31 @@ const createThing = async (req, res, next) => {
     colName,
     title,
     description,
-    categories,
     apiWriteKey,
     apiReadKey,
     enabled,
     dataLifeCycle,
     creator,
-    users,
   } = req.body;
 
   const createdThing = new Thing({
     colName,
     title,
     description,
-    categories,
+    categories: [],
     apiWriteKey,
     apiReadKey,
     enabled,
     dataLifeCycle,
     creator,
-    users,
+    users: [],
   });
 
   let user;
   try {
-    user = await user.findById(creator);
+    user = await User.findById(creator);
   } catch (err) {
-    const error = new HttpError("Creating place failed, please try again", 500);
+    const error = new HttpError("Creating thing failed, please try again", 500);
     return next(error);
   }
 
@@ -110,7 +99,7 @@ const createThing = async (req, res, next) => {
     return next(error);
   }
 
-  console.log(user);
+  createdThing.users = creator;
 
   try {
     const sess = await mongoose.startSession();
@@ -136,7 +125,7 @@ const updateThing = async (req, res, next) => {
     );
   }
 
-  const { title, description, categoryID, enabled, users } = req.body;
+  const { title, description, categories, enabled, users } = req.body;
   const tid = req.params.tid;
 
   let thing;
@@ -152,7 +141,7 @@ const updateThing = async (req, res, next) => {
 
   thing.title = title;
   thing.description = description;
-  thing.categoryID = categoryID;
+  thing.categories = categories;
   thing.enabled = enabled;
   thing.users = users;
 
