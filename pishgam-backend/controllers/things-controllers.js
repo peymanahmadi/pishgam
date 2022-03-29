@@ -189,8 +189,40 @@ const deleteThing = async (req, res, next) => {
   res.status(200).json({ message: "Deleted thing." });
 };
 
+const setThingValue = async (req, res, next) => {
+  console.log(req.query.tid);
+  let title = req.query.title;
+  let value = req.query.value;
+
+  const thingModel = mongoose.model(
+    title,
+    new mongoose.Schema({
+      value: Number,
+      setAt: { type: Date, default: Date.now() },
+    })
+  );
+
+  const thingData = new thingModel();
+  thingData.value = value;
+
+  let thingValue;
+  try {
+    thingValue = await thingData.save();
+  } catch (err) {
+    const error = new HttpError(err, 500);
+    return next(error);
+  }
+
+  res.json({
+    title,
+    value,
+  });
+};
+
 exports.getThingByID = getThingByID;
 exports.getThingsByUserID = getThingsByUserID;
 exports.createThing = createThing;
 exports.updateThing = updateThing;
 exports.deleteThing = deleteThing;
+
+exports.setThingValue = setThingValue;
