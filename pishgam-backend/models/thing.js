@@ -9,12 +9,10 @@ const thingSchema = new Schema(
     title: { type: String, required: true },
     description: { type: String },
     categories: [{ type: mongoose.Types.ObjectId, ref: "Category" }],
-    apiWriteKey: { type: String, required: true, unique: true },
-    apiReadKey: { type: String, required: true },
     enabled: { type: Boolean, required: true },
     dataLifeCycle: { type: Number, required: true },
     creator: { type: String, required: true },
-    users: [{ type: mongoose.Types.ObjectId, required: true, ref: "User" }],
+    users: [{ type: mongoose.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );

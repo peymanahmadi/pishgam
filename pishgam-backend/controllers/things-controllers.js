@@ -33,9 +33,9 @@ const getThingByID = async (req, res, next) => {
 const getThingsByUserID = async (req, res, next) => {
   const userID = req.params.uid;
 
-  let things;
+  let userWithThings;
   try {
-    things = await Thing.find({ users: userID });
+    userWithThings = await User.findById(userID).populate("things");
   } catch (err) {
     const error = new HttpError(
       "Fetching things failed, please try again later",
@@ -44,14 +44,16 @@ const getThingsByUserID = async (req, res, next) => {
     return next(error);
   }
 
-  if (!things || things.length === 0) {
+  if (!userWithThings || userWithThings.length === 0) {
     return next(
       new HttpError("Could not find things for the provided user id.", 404)
     );
   }
 
   res.json({
-    things: things.map((thing) => thing.toObject({ getters: true })),
+    things: userWithThings.things.map((thing) =>
+      thing.toObject({ getters: true })
+    ),
   });
 };
 
@@ -62,24 +64,14 @@ const createThing = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const {
-    colName,
-    title,
-    description,
-    apiWriteKey,
-    apiReadKey,
-    enabled,
-    dataLifeCycle,
-    creator,
-  } = req.body;
+  const { colName, title, description, enabled, dataLifeCycle, creator } =
+    req.body;
 
   const createdThing = new Thing({
     colName,
     title,
     description,
     categories: [],
-    apiWriteKey,
-    apiReadKey,
     enabled,
     dataLifeCycle,
     creator,
@@ -159,24 +151,36 @@ const updateThing = async (req, res, next) => {
 };
 
 const deleteThing = async (req, res, next) => {
-  const tid = req.params.tid;
+  const thingID = req.params.tid;
 
   let thing;
   try {
-    thing = await Thing.findById(tid);
+    thing = await Thing.findById(thingID).populate("users");
   } catch (err) {
     const error = new HttpError(
-      "Something went wrong, could not delete thing.",
+      "Something went wrong, could not delete thing. " + err + " ",
       500
     );
     return next(error);
   }
 
+  // console.log(thing);
+
+  if (!thing) {
+    const error = new HttpError("Could not find thing for this id.", 404);
+    return next(error);
+  }
+
   try {
-    await thing.remove();
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await thing.remove({ session: sess });
+    thing.users.things.pull(thing);
+    await thing.users.save({ session: sess });
+    await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
-      "Something went wrong, could not delete thing.",
+      "Something went wrong, could not delete thing. " + err + " ",
       500
     );
     return next(error);
