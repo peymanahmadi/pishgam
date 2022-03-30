@@ -1,19 +1,29 @@
 .form-control {
   margin: 1rem 0;
 
-  label,
-  input,
-  textarea {
-    display: block;
-  }
-
   label {
+    display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
 
-  input,
+  input {
+    display: block;
+    width: 100%;
+    font: inherit;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 0.15rem 0.25rem;
+
+    &:focus {
+      outline: none;
+      background: #ebebeb;
+      border-color: #510077;
+    }
+  }
+
   textarea {
+    display: block;
     width: 100%;
     font: inherit;
     border: 1px solid #ccc;
@@ -29,20 +39,16 @@
 }
 
 .form-control--invalid {
-  label,
+  label {
+    color: red;
+  }
   p {
     color: red;
   }
-
-  input,
-  textarea {
+  input {
     border-color: red;
     background: #ffd1d1;
   }
-}
-
-.form-control--invalid {
-  input,
   textarea {
     border-color: red;
     background: #ffd1d1;

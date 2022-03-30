@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../../shared/components/FormElements/Button";
 import ThingsList from "../components/ThingsList";
+import Login from "../components/user/Login";
 import styles from "./Dashboard.module.scss";
 
 const DUMMY_THINGS = [
@@ -31,18 +32,16 @@ const Dashboard = () => {
   const userID = useParams().userID;
   console.log(userID);
 
-  const [showNewThing, setShowNewThing] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const openNewThingHandler = () => setShowNewThing(true);
+  const openNewThingHandler = () => setIsLoggedIn(true);
 
-  const closeNewThingHandler = () => setShowNewThing(false);
+  const closeNewThingHandler = () => setIsLoggedIn(false);
 
   return (
     <>
-      <header style={{ height: "5rem", background: "lightgrey" }}>
-        <Button onClick={openNewThingHandler}>New Thing</Button>
-      </header>
-      <ThingsList items={DUMMY_THINGS} />;
+      {isLoggedIn && <ThingsList items={DUMMY_THINGS} />}
+      {!isLoggedIn && <Login />}
     </>
   );
 };
