@@ -1,7 +1,4 @@
 import styles from "./Products.module.scss";
-import Card from "../../shared/components/FormElements/Card";
-import Button from "../../shared/components/FormElements/Button";
-import Batching from "../../shared/Images/Home/Batching.png";
 import ProductCard from "../../shared/components/FormElements/ProductCard";
 
 const Products = () => {
@@ -10,26 +7,26 @@ const Products = () => {
       <ProductCard
         title="AUTOMATIC BATCHING SYSTEM"
         // imgAddr={Batching}
-        desc="A flexible system to control batching"
-        buttonText="LEARN MORE"
+        desc="A high precision and flexible automated system useful to weighing and mixing raw materials together to create a final product."
+        buttonText="Learn More"
       />
       <ProductCard
-        title="SILO / TANK WEIGHING SYSTEM"
+        title="WEIGHING SYSTEM"
         // imgAddr={Batching}
-        desc="A flexible system to control batching"
-        buttonText="LEARN MORE"
+        desc="A high precision weighing system usable for all kinds of industrial and non-industrial usages."
+        buttonText="Learn More"
       />
       <ProductCard
         title="FEED MILL PLANT AUTOMATION"
         // imgAddr={Batching}
         desc="A flexible system to control batching"
-        buttonText="LEARN MORE"
+        buttonText="Learn More"
       />
       <ProductCard
         title="IOT KIT"
         // imgAddr={Batching}
         desc="A flexible system to control batching"
-        buttonText="LEARN MORE"
+        buttonText="Learn More"
       />
     </div>
   );

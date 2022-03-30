@@ -3,15 +3,16 @@
   flex-direction: column;
   // border: 1px solid #c0c0c8;
   border-radius: 5px;
-  // padding: 1rem;
   // background: white;
   // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-  margin: 2rem 0;
+  margin: 2rem 1rem;
+  // padding: 1rem;
+  align-items: center;
 
   h3 {
     font-family: "Montserrat", sans-serif;
     // font-size: 1rem;
-    color: #333;
+    color: rgb(20, 14, 14);
     font-weight: 400;
     // margin: 1rem 0.25rem;
     text-align: center;
@@ -23,8 +24,11 @@
   // }
 
   p {
-    font-family: "Montserrat", sans-serif;
+    // font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
     margin: 1rem 0.25rem;
+    padding: 0.5rem 2rem;
     color: #c0c0c8;
+    width: 25rem;
   }
 }

@@ -19,7 +19,7 @@ const Home = () => {
         title="What our customers are saying?"
       ></ZigZagLayout>
       <ZigZagLayout bg="#ffffff" title="Blog"></ZigZagLayout>
-      <ZigZagLayout bg="#f5f5f8">
+      <ZigZagLayout bg="#f5f5f8" title="Follow Us On">
         <SocialNetworks />
       </ZigZagLayout>
     </div>
