@@ -1,8 +1,4 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import Button from "../../shared/components/FormElements/Button";
 import ThingsList from "../components/ThingsList";
-import Login from "../components/user/Login";
 import styles from "./Dashboard.module.scss";
 
 const DUMMY_THINGS = [
@@ -29,21 +25,7 @@ const DUMMY_THINGS = [
 ];
 
 const Dashboard = () => {
-  const userID = useParams().userID;
-  console.log(userID);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const openNewThingHandler = () => setIsLoggedIn(true);
-
-  const closeNewThingHandler = () => setIsLoggedIn(false);
-
-  return (
-    <>
-      {isLoggedIn && <ThingsList items={DUMMY_THINGS} />}
-      {!isLoggedIn && <Login />}
-    </>
-  );
+  return <ThingsList items={DUMMY_THINGS} />;
 };
 
 export default Dashboard;
