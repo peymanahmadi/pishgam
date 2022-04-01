@@ -111,8 +111,6 @@ const createCategory = async (req, res, next) => {
 
   createdCategory.users = creator;
 
-  console.log(createdCategory);
-
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();

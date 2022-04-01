@@ -155,7 +155,7 @@ const deleteThing = async (req, res, next) => {
 
   let thing;
   try {
-    thing = await Thing.findById(thingID).populate("users");
+    thing = await Thing.findById(thingID);
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not delete thing. " + err + " ",
@@ -164,7 +164,8 @@ const deleteThing = async (req, res, next) => {
     return next(error);
   }
 
-  // console.log(thing);
+  console.log(thing);
+  console.log("------------");
 
   if (!thing) {
     const error = new HttpError("Could not find thing for this id.", 404);
@@ -172,6 +173,11 @@ const deleteThing = async (req, res, next) => {
   }
 
   try {
+    // const session = await Thing.startSession();
+    // await session.withTransaction(() => {
+    //   return Thing.findByIdAndDelete(thingID, { session: session });
+    // });
+
     const sess = await mongoose.startSession();
     sess.startTransaction();
     await thing.remove({ session: sess });
