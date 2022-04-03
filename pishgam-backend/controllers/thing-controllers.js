@@ -1,33 +1,35 @@
 const mongoose = require("mongoose");
 const HttpError = require("../models/http-error");
+const Thing = require("../models/thing_");
+
+const Schema = mongoose.Schema;
+
+var thingSchema = new Schema({
+  value: Number,
+  setAt: { type: Date, default: Date.now() },
+});
 
 const setThingValue = async (req, res, next) => {
   let title = req.query.title;
   let value = req.query.value;
 
-  const thingModel = mongoose.model(
-    title,
-    new mongoose.Schema({
-      value: Number,
-      setAt: { type: Date, default: Date.now() },
-    })
-  );
+  let thingModel = mongoose.model(title, thingSchema);
 
-  const thingData = new thingModel();
-  thingData.value = value;
+  let createdThing = new thingModel({
+    value: value,
+    setAt: Date.now(),
+  });
 
   let thingValue;
   try {
-    thingValue = await thingData.save();
+    //   // thingValue = await thingData.save();
+    thingValue = await createdThing.save();
   } catch (err) {
     const error = new HttpError(err, 500);
     return next(error);
   }
 
-  res.json({
-    title,
-    value,
-  });
+  res.json({ thingValue });
 };
 
 const getThingValueByDate = async (req, res, next) => {};

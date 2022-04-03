@@ -30,10 +30,10 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  // .connect("mongodb://localhost:27017/pishgam")
-  .connect(
-    "mongodb+srv://peyman:Qq12345@cluster0.3wfo1.mongodb.net/pishgam?retryWrites=true&w=majority"
-  )
+  .connect("mongodb://localhost:27017/pishgam")
+  // .connect(
+  //   "mongodb+srv://peyman:Qq12345@cluster0.3wfo1.mongodb.net/pishgam?retryWrites=true&w=majority"
+  // )
   // .connect(
   //   "mongodb+srv://peyman:Qq12345%21@cluster0.3wfo1.mongodb.net/Pishgam?replicaSet=atlas-ge36gy-shard-0&readPreference=primary&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1"
   // )
