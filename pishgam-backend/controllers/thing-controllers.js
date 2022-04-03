@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 const HttpError = require("../models/http-error");
-const Thing = require("../models/thing_");
 
 const Schema = mongoose.Schema;
 
 var thingSchema = new Schema({
   value: Number,
-  setAt: { type: Date, default: Date.now() },
+  setAt: Date,
 });
 
 const setThingValue = async (req, res, next) => {
@@ -22,17 +21,32 @@ const setThingValue = async (req, res, next) => {
 
   let thingValue;
   try {
-    //   // thingValue = await thingData.save();
     thingValue = await createdThing.save();
   } catch (err) {
     const error = new HttpError(err, 500);
     return next(error);
   }
 
-  res.json({ thingValue });
+  res.status(201).json({ thingValue: createdThing });
 };
 
-const getThingValueByDate = async (req, res, next) => {};
+const getThingValueByDate = async (req, res, next) => {
+  let thingID = req.params.tid;
+
+  let thingModel = mongoose.model(thingID, thingSchema);
+
+  let thingData;
+  try {
+    thingData = await thingModel.find({});
+  } catch (err) {
+    const error = new HttpError(err, 500);
+    return next(error);
+  }
+
+  res.json({
+    thingValues: thingData.map((thing) => thing.toObject({ getters: true })),
+  });
+};
 
 exports.setThingValue = setThingValue;
 exports.getThingValueByDate = getThingValueByDate;
