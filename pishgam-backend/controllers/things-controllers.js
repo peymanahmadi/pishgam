@@ -4,6 +4,24 @@ const Thing = require("../models/thing");
 const User = require("../models/user");
 const Category = require("../models/category");
 const HttpError = require("../models/http-error");
+const thing = require("../models/thing");
+
+const getThings = async (req, res, next) => {
+  let things;
+  try {
+    things = await Thing.find({});
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not find things",
+      500
+    );
+    return next(error);
+  }
+
+  res.json({
+    things: things.map((thing) => thing.toObject({ getters: true })),
+  });
+};
 
 const getThingByID = async (req, res, next) => {
   const thingID = req.params.tid;
@@ -221,6 +239,7 @@ const setThingValue = async (req, res, next) => {
   });
 };
 
+exports.getThings = getThings;
 exports.getThingByID = getThingByID;
 exports.getThingsByUserID = getThingsByUserID;
 exports.createThing = createThing;

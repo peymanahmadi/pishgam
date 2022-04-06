@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment");
 const HttpError = require("../models/http-error");
 
 const Schema = mongoose.Schema;
@@ -16,8 +17,10 @@ const setThingValue = async (req, res, next) => {
 
   let createdThing = new thingModel({
     value: value,
-    setAt: Date.now(),
+    setAt: moment(),
   });
+
+  console.log(moment().locale());
 
   let thingValue;
   try {
@@ -32,12 +35,26 @@ const setThingValue = async (req, res, next) => {
 
 const getThingValueByDate = async (req, res, next) => {
   let thingID = req.params.tid;
+  let valueDate = req.query.date;
+  const today = moment().startOf("day");
 
   let thingModel = mongoose.model(thingID, thingSchema);
 
+  console.log(valueDate);
+  console.log(moment(valueDate).add(1, "days"));
+
   let thingData;
   try {
-    thingData = await thingModel.find({});
+    thingData = await thingModel.find({
+      // setAt: {
+      //   $gte: today.toDate(),
+      //   $lte: moment(today).endOf("day").toDate(),
+      // },
+      setAt: {
+        $gte: new Date(valueDate),
+        $lte: moment(valueDate).add(1, "days"),
+      },
+    });
   } catch (err) {
     const error = new HttpError(err, 500);
     return next(error);

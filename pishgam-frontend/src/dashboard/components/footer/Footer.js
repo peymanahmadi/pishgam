@@ -10,7 +10,9 @@ const Footer = (props) => {
   return (
     <div className={styles.footer}>
       <input type="date" onChange={inputChangeHandler} ref={dateRef} />
-      <Button inverse>Today</Button>
+      <Button inverse small>
+        Today
+      </Button>
     </div>
   );
 };

@@ -16,8 +16,9 @@ const ThingsList = (props) => {
         <ThingItem
           key={item.id}
           id={item.id}
-          title={item.name}
-          value={item.value}
+          colName={item.colName}
+          title={item.title}
+          // value={item.value}
         />
       ))}
     </ul>

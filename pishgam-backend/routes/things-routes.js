@@ -5,6 +5,7 @@ const thingsControllers = require("../controllers/things-controllers");
 
 const router = express.Router();
 
+router.get("/", thingsControllers.getThings);
 router.get("/:tid", thingsControllers.getThingByID);
 router.get("/user/:uid", thingsControllers.getThingsByUserID);
 router.get("/thing/:tid", thingsControllers.setThingValue);

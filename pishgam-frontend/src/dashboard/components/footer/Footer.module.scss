@@ -1,9 +1,11 @@
 .footer {
   display: flex;
   justify-content: space-around;
+  margin-top: 1rem;
 
   input {
     font: inherit;
+    font-size: 0.9rem;
     border: 1px solid #00c34b;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);

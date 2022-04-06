@@ -1,23 +1,49 @@
+import { useCallback, useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import styles from "./LineChart.module.scss";
-import silo from "./silo.json";
+// import styles from "./LineChart.module.scss";
+// import silo from "./silo.json";
 
 const LineChart = (props) => {
-  const newDate = new Date(props.date);
-  //   console.log(newDate);
-  //   const res = silo.map((el) => new Date(el.dt).toLocaleDateString());
-  //   console.log(res);
-  const results = silo.filter((result) => new Date(result.dt) > newDate);
-  console.log(results);
-  //   console.log(props.date);
-  //   console.log(Date.parse("2022-03-19T00:00:00.000Z"));
+  const [thingValues, setThingValues] = useState([]);
+  var today = new Date();
+  var todayDate =
+    today.getFullYear() + "-" + today.getMonth() + 1 + "-" + today.getDate();
+
+  const fetchThingValues = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=2022-04-06`
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+      const data = await response.json();
+
+      const transformedThingValues = data.thingValues.map((thingValue) => {
+        return {
+          key: thingValue.id,
+          value: thingValue.value,
+          dt: thingValue.setAt,
+        };
+      });
+      console.log(transformedThingValues);
+      setThingValues(transformedThingValues);
+      const d = thingValues.map((value) => value.setAt);
+      console.log(d);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchThingValues();
+  }, [fetchThingValues]);
 
   const chartData = {
     series: [
       {
         name: "Weight",
-        // data: silo.map((value) => value.value),
-        data: results.map((value) => value.value),
+        data: thingValues.map((value) => value.value),
       },
     ],
 
@@ -44,9 +70,9 @@ const LineChart = (props) => {
       },
       xaxis: {
         type: "datetime",
-        categories: silo.map((value) => value.dt),
-        // categories: data1.times,
+        categories: thingValues.map((value) => value.dt),
         labels: {
+          datetimeUTC: false,
           format: "HH:mm",
         },
         axisBorder: {
