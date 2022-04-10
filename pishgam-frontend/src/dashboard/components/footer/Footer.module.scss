@@ -1,3 +1,5 @@
+@use "../../../shared/components/UIElements/UITheme" as *;
+
 .footer {
   display: flex;
   justify-content: space-around;
@@ -6,9 +8,11 @@
   input {
     font: inherit;
     font-size: 0.9rem;
-    border: 1px solid #00c34b;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    color: $green;
+    border: 1px solid $green;
+    border-radius: 2px;
+    // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     padding: 0.5rem 1.5rem;
+    cursor: pointer;
   }
 }

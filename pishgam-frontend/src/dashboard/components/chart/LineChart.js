@@ -7,12 +7,14 @@ const LineChart = (props) => {
   const [thingValues, setThingValues] = useState([]);
   var today = new Date();
   var todayDate =
-    today.getFullYear() + "-" + today.getMonth() + 1 + "-" + today.getDate();
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
+  // console.log(todayDate);
 
   const fetchThingValues = useCallback(async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=2022-04-06`
+        `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=${props.newDate}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong");
@@ -30,10 +32,11 @@ const LineChart = (props) => {
       setThingValues(transformedThingValues);
       const d = thingValues.map((value) => value.setAt);
       console.log(d);
+      console.log("Date " + props.newDate);
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [props.newDate]);
 
   useEffect(() => {
     fetchThingValues();

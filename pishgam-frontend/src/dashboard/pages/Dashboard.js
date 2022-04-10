@@ -61,9 +61,9 @@ const Dashboard = () => {
     content = <p>Loading...</p>;
   }
   return (
-    <>
+    <div style={{ background: "#EFF2F5", height: "100vh" }}>
       <section>{content}</section>
-    </>
+    </div>
   );
 };
 
