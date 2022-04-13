@@ -8,13 +8,17 @@ const LineChart = (props) => {
   var today = new Date();
   var todayDate =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  const [todayValue, setTodayValue] = useState(todayDate);
 
   // console.log(todayDate);
 
   const fetchThingValues = useCallback(async () => {
     try {
+      // const response = await fetch(
+      //   `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=${props.newDate}`
+      // );
       const response = await fetch(
-        `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=${props.newDate}`
+        `http://api.thingssolution.com/api/v1/thing/${props.colName}?date=${todayDate}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong");

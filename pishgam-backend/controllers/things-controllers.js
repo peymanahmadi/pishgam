@@ -120,6 +120,8 @@ const createThing = async (req, res, next) => {
     return next(error);
   }
 
+  console.log(createdThing);
+
   res.status(201).json({ thing: createdThing });
 };
 
