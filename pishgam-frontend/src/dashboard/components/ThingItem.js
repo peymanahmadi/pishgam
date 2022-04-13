@@ -6,7 +6,10 @@ import Header from "./header/Header";
 // import styles from "./ThingItem.module.scss";
 
 const ThingItem = (props) => {
-  const [newDate, setNewDate] = useState();
+  const today = new Date();
+  let todayDate =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  const [newDate, setNewDate] = useState(todayDate);
   const onChangeDate = (date) => {
     setNewDate(date);
   };

@@ -18,7 +18,7 @@ const LineChart = (props) => {
       //   `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=${props.newDate}`
       // );
       const response = await fetch(
-        `http://api.thingssolution.com/api/v1/thing/${props.colName}?date=${todayDate}`
+        `http://api.thingssolution.com/api/v1/thing/${props.colName}?date=${props.newDate}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong");
@@ -32,15 +32,15 @@ const LineChart = (props) => {
           dt: thingValue.setAt,
         };
       });
-      console.log(transformedThingValues);
+      // console.log(transformedThingValues);
       setThingValues(transformedThingValues);
-      const d = thingValues.map((value) => value.setAt);
-      console.log(d);
+      // const d = thingValues.map((value) => value.setAt);
+      // console.log(d);
       console.log("Date " + props.newDate);
     } catch (err) {
       console.log(err);
     }
-  }, [props.newDate]);
+  }, [props.newDate, props.colName]);
 
   useEffect(() => {
     fetchThingValues();
