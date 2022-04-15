@@ -1,13 +1,14 @@
 .navbar {
+  font-family: "Ubuntu", sans-serif;
   background: white;
   height: 4.5rem;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   user-select: none;
-  border-bottom: 1px solid #ccc;
+  // border-bottom: 1px solid rgb(211, 211, 211);
   z-index: 5;
 
   .menubar {

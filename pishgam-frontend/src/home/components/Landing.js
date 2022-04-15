@@ -10,13 +10,18 @@ const Landing = () => {
       </div>
       <div className={styles["landing-text"]}>
         <h1>
-          Empower your <span>business</span> with
+          Empower your <span>business</span> using <span>Things Solution!</span>
         </h1>
-        <h1>Pishgam IIoT Solutions!</h1>
         <div>
-          <h3>We give you full control and visibility of your operations.</h3>
+          <h3>We give you full control and visibility of your</h3>
+          <h3>
+            <span>Operations</span>, <span>Plans</span>, <span>Strategies</span>
+            , and <span>Products</span>.
+          </h3>
         </div>
-        <Button>LEARN MORE</Button>
+        <div style={{ marginTop: "1rem" }}>
+          <Button>Know More</Button>
+        </div>
       </div>
     </div>
   );

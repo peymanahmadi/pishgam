@@ -18,7 +18,7 @@ const LineChart = (props) => {
       //   `http://127.0.0.1:5000/api/v1/thing/${props.colName}?date=${props.newDate}`
       // );
       const response = await fetch(
-        `http://api.thingssolution.com/api/v1/thing/${props.colName}?date=${props.newDate}`
+        `https://api.thingssolution.com/api/v1/thing/${props.colName}?date=${props.newDate}`
       );
       if (!response.ok) {
         throw new Error("Something went wrong");

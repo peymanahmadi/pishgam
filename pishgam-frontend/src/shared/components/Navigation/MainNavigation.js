@@ -37,7 +37,7 @@ const MainNavigation = () => {
           </div>
           <a href="/" className={styles.logo}>
             <img src={Logo} alt="Pishgam" width="80px" height="60px" />
-            <h1>Pishgam</h1>
+            <h1>Things Solution</h1>
           </a>
         </div>
 

@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <Landing />
-      <ZigZagLayout bg="#f5f5f8" title="Our Products">
+      {/* <ZigZagLayout bg="#f5f5f8" title="Our Products">
         <Products />
       </ZigZagLayout>
       <ZigZagLayout bg="#ffffff" title="Our Startup Project">
@@ -23,7 +23,7 @@ const Home = () => {
       <ZigZagLayout bg="#ffffff" title="Blog"></ZigZagLayout>
       <ZigZagLayout bg="#f5f5f8" title="Follow Us On">
         <SocialNetworks />
-      </ZigZagLayout>
+      </ZigZagLayout> */}
     </div>
   );
 };
