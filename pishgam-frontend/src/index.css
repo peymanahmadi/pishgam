@@ -8,7 +8,8 @@
 
 body {
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Ubuntu", sans-serif;
 }
 
 .slide-in-left-enter {

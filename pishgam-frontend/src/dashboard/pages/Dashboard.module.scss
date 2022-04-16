@@ -1,0 +1,26 @@
+@use "../../shared/components/UIElements/UITheme" as *;
+
+.container {
+  background: $lighGray;
+
+  .header {
+    border-top: 1px solid $lighGray;
+    background-color: white;
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    h2 {
+      font: inherit;
+      color: #ccc;
+    }
+
+    .flatPickr {
+      font: inherit;
+      background-color: aqua;
+      color: red;
+    }
+  }
+}

@@ -1,11 +1,26 @@
 import { useCallback, useEffect, useState } from "react";
+import Flatpickr from "react-flatpickr";
+// import "flatpickr/dist/themes/material_green.css";
+import "flatpickr/dist/flatpickr.css";
+
 import ThingsList from "../components/ThingsList";
-// import styles from "./Dashboard.module.scss";
+import styles from "./Dashboard.module.scss";
 
 const Dashboard = () => {
   const [things, setThings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [date, setDate] = useState(new Date());
+
+  const options = {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+    defaultDate: [date],
+    // onReady: (selectedDates, dateStr, instance) => {
+    //   instance.element.value = dateStr.replace("to, " - "");
+    // },
+  };
 
   const fetchThingsHandler = useCallback(async () => {
     setIsLoading(true);
@@ -64,7 +79,11 @@ const Dashboard = () => {
     content = <p>Loading...</p>;
   }
   return (
-    <div style={{ background: "#EFF2F5", height: "100vh" }}>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h2>Dashboard</h2>
+        <Flatpickr className={styles.flatPickr} options={options} />
+      </div>
       <section>{content}</section>
     </div>
   );

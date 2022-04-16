@@ -116,7 +116,7 @@ const LineChart = (props) => {
       <ReactApexChart
         options={chartData.options}
         series={chartData.series}
-        height="100%"
+        height="250"
       />
     </div>
   );
