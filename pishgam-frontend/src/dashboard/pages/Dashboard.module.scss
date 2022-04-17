@@ -1,26 +1,44 @@
 @use "../../shared/components/UIElements/UITheme" as *;
 
 .container {
-  background: $lighGray;
+  background: $lightGray;
+  height: 100%;
 
   .header {
-    border-top: 1px solid $lighGray;
+    border-top: 1px solid $lightGray;
     background-color: white;
     display: flex;
     height: 3rem;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    // padding: 0 1rem;
 
-    h2 {
-      font: inherit;
-      color: #ccc;
+    h3 {
+      color: $darkGray;
+      font-size: 1rem;
+      margin-left: 20px;
+      font-weight: 300;
     }
 
     .flatPickr {
       font: inherit;
-      background-color: aqua;
-      color: red;
+      background-color: white;
+      color: $darkGray;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid $borderGray;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-right: 20px;
+      //   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        border: 1px solid $darkGray;
+      }
+
+      &:focus {
+        border: 1px solid $darkGray;
+        outline: none;
+      }
     }
   }
 }

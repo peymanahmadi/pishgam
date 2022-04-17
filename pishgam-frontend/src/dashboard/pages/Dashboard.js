@@ -17,6 +17,10 @@ const Dashboard = () => {
     altFormat: "F j, Y",
     dateFormat: "Y-m-d",
     defaultDate: [date],
+    onChange: (selectedDates, dateStr, instance) => {
+      instance.element.value = dateStr.replace("to", "-");
+      setDate(instance.element.value);
+    },
     // onReady: (selectedDates, dateStr, instance) => {
     //   instance.element.value = dateStr.replace("to, " - "");
     // },
@@ -26,7 +30,6 @@ const Dashboard = () => {
     setIsLoading(true);
     setError(null);
     try {
-      // const response = await fetch("http://127.0.0.1:5000/api/v1/things");
       const response = await fetch(
         "https://api.thingssolution.com/api/v1/things"
       );
@@ -43,19 +46,6 @@ const Dashboard = () => {
           title: thing.title,
         };
       });
-
-      // const loadedThings = [];
-      // for (const key in data) {
-      //   loadedThings.push({
-      //     id: key.id,
-      //     title: data[key].title,
-      //   });
-
-      //   console.log(data);
-      //   console.log(loadedThings);
-
-      //   setThings(loadedThings);
-      // }
       setThings(transformedThings);
     } catch (error) {
       setError(error);
@@ -68,7 +58,7 @@ const Dashboard = () => {
 
   let content = <p>Found no things.</p>;
   if (things.length > 0) {
-    content = <ThingsList items={things} />;
+    content = <ThingsList date={date} items={things} />;
   }
 
   if (error) {
@@ -81,7 +71,7 @@ const Dashboard = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>Dashboard</h2>
+        <h3>Here is what's happening with your projects today:</h3>
         <Flatpickr className={styles.flatPickr} options={options} />
       </div>
       <section>{content}</section>

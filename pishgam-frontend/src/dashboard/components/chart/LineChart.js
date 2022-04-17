@@ -46,77 +46,105 @@ const LineChart = (props) => {
     fetchThingValues();
   }, [fetchThingValues]);
 
-  const chartData = {
-    series: [
-      {
-        name: "Weight",
-        data: thingValues.map((value) => value.value),
-      },
-    ],
+  const series = [
+    {
+      name: "Weight",
+      data: thingValues.map((value) => value.value),
+    },
+  ];
 
-    options: {
-      chart: {
-        type: "area",
-        toolbar: {
-          autoSelected: "zoom",
-        },
-        animation: {
-          initialAnimation: {
-            enabled: true,
-          },
-        },
-        zoom: {
-          type: "x",
+  const options = {
+    chart: {
+      type: "area",
+      height: 350,
+
+      toolbar: {
+        autoSelected: "zoom",
+      },
+
+      animation: {
+        animations: {
           enabled: true,
-          autoScaleYaxis: true,
+          easing: "easeinout",
+          speed: 8000,
+        },
+        initialAnimation: {
+          enabled: true,
         },
       },
-      stroke: {
-        curve: "smooth",
-        width: 2,
-      },
-      xaxis: {
-        type: "datetime",
-        categories: thingValues.map((value) => value.dt),
-        labels: {
-          datetimeUTC: false,
-          format: "HH:mm",
-        },
-        axisBorder: {
-          show: false,
-        },
-      },
-      yaxis: {
-        labels: {
-          format: "HH:mm",
-        },
-      },
-      legend: {
-        show: true,
-      },
-      tooltip: {
+
+      zoom: {
+        type: "x",
         enabled: true,
-        shred: true,
-        theme: "light",
-        style: {
-          fontSize: "12px",
-        },
-        x: {
-          format: "HH:mm",
-        },
+        autoScaleYaxis: true,
       },
-      grid: {
+    },
+
+    stroke: {
+      curve: "smooth",
+      width: 3,
+    },
+
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        stops: [0, 100],
+      },
+    },
+
+    xaxis: {
+      type: "datetime",
+      categories: thingValues.map((value) => value.dt),
+      labels: {
+        datetimeUTC: false,
+        format: "HH:mm",
+      },
+      axisBorder: {
         show: false,
       },
     },
+
+    yaxis: {
+      tickAmount: 4,
+      labels: {
+        format: "HH:mm",
+        style: {
+          colors: "#8e8da4",
+        },
+      },
+    },
+
+    legend: {
+      show: true,
+    },
+
+    tooltip: {
+      enabled: true,
+      shred: true,
+      theme: "light",
+      style: {
+        fontSize: "12px",
+      },
+      x: {
+        format: "HH:mm",
+      },
+    },
+
+    // grid: {
+    //   show: false,
+    // },
   };
 
   return (
     <div>
       <ReactApexChart
-        options={chartData.options}
-        series={chartData.series}
-        height="250"
+        options={options}
+        series={series}
+        type="area"
+        // height="250"
       />
     </div>
   );

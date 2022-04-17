@@ -19,6 +19,7 @@ const ThingsList = (props) => {
           colName={item.colName}
           title={item.title}
           // value={item.value}
+          date={props.date}
         />
       ))}
     </ul>
