@@ -5,6 +5,7 @@ import "flatpickr/dist/flatpickr.css";
 
 import ThingsList from "../components/ThingsList";
 import styles from "./Dashboard.module.scss";
+import Card from "../../shared/components/FormElements/Card";
 
 const Dashboard = () => {
   const [things, setThings] = useState([]);
@@ -21,9 +22,10 @@ const Dashboard = () => {
       instance.element.value = dateStr.replace("to", "-");
       setDate(instance.element.value);
     },
-    // onReady: (selectedDates, dateStr, instance) => {
-    //   instance.element.value = dateStr.replace("to, " - "");
-    // },
+    onReady: (selectedDates, dateStr, instance) => {
+      instance.element.value = dateStr.replace("to, " - "");
+      setDate(instance.element.value);
+    },
   };
 
   const fetchThingsHandler = useCallback(async () => {
@@ -70,10 +72,14 @@ const Dashboard = () => {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h3>Here is what's happening with your projects today:</h3>
         <Flatpickr className={styles.flatPickr} options={options} />
-      </div>
+      </div> */}
+      <Card className={styles.card}>
+        <h3>Here is what's happening with your projects</h3>
+        <Flatpickr className={styles.flatPickr} options={options} />
+      </Card>
       <section>{content}</section>
     </div>
   );

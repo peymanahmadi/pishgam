@@ -2,15 +2,16 @@
   list-style: none;
   //   margin: 1rem 1rem;
   padding: 0;
-  //   width: 90%;
+  // width: 90%;
   //   max-width: 50rem;
-  //   display: flex;
+  display: flex;
+  justify-content: center;
   //   justify-content: space-around;
-  //   flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  flex-wrap: wrap;
+  // display: grid;
+  // grid-template-columns: repeat(1, 1fr);
 
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  // @media screen and (max-width: 1024px) {
+  //   grid-template-columns: repeat(1, 1fr);
+  // }
 }

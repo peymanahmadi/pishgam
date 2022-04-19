@@ -3,6 +3,8 @@
 .container {
   background: $lightGray;
   height: 100%;
+  // display: flex;
+  // justify-content: stretch;
 
   .header {
     border-top: 1px solid $lightGray;
@@ -12,33 +14,41 @@
     align-items: center;
     justify-content: space-between;
     // padding: 0 1rem;
+  }
+}
 
-    h3 {
-      color: $darkGray;
-      font-size: 1rem;
-      margin-left: 20px;
-      font-weight: 300;
+.card {
+  // height: 100px;
+  display: flex;
+  background: $blue-2;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    color: $darkBlue;
+    font-size: 1rem;
+    margin-left: 20px;
+    font-weight: 400;
+  }
+
+  .flatPickr {
+    font: inherit;
+    background-color: white;
+    color: $darkBlue;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid $lightBlue;
+    border-radius: 2px;
+    cursor: pointer;
+    // margin-right: 20px;
+    //   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      border: 1px solid $darkGray;
     }
 
-    .flatPickr {
-      font: inherit;
-      background-color: white;
-      color: $darkGray;
-      padding: 0.25rem 0.5rem;
-      border: 1px solid $borderGray;
-      border-radius: 2px;
-      cursor: pointer;
-      margin-right: 20px;
-      //   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-
-      &:hover {
-        border: 1px solid $darkGray;
-      }
-
-      &:focus {
-        border: 1px solid $darkGray;
-        outline: none;
-      }
+    &:focus {
+      border: 1px solid $darkGray;
+      outline: none;
     }
   }
 }

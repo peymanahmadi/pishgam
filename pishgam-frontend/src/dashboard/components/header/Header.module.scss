@@ -1,12 +1,16 @@
+@use "../../../shared/components/UIElements/UITheme" as *;
+
 .header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
 
   .title {
     display: flex;
 
     h2 {
       font-weight: 400;
+      color: $blue-chartcolor;
     }
 
     .blob {
@@ -23,7 +27,8 @@
     }
 
     span {
-      background: #1d3557;
+      // background: #1d3557;
+      background: #2a4f96;
       color: #f1faee;
       align-self: flex-end;
       margin-left: 0.25rem;

@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-// import styles from "./LineChart.module.scss";
+import styles from "./LineChart.module.scss";
 // import silo from "./silo.json";
 
 const LineChart = (props) => {
   const [thingValues, setThingValues] = useState([]);
-  var today = new Date();
-  var todayDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  const [todayValue, setTodayValue] = useState(todayDate);
+  // var today = new Date();
+  // var todayDate =
+  //   today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  // const [todayValue, setTodayValue] = useState(todayDate);
 
   // console.log(todayDate);
 
@@ -32,11 +32,7 @@ const LineChart = (props) => {
           dt: thingValue.setAt,
         };
       });
-      // console.log(transformedThingValues);
       setThingValues(transformedThingValues);
-      // const d = thingValues.map((value) => value.setAt);
-      // console.log(d);
-      console.log("Date " + props.newDate);
     } catch (err) {
       console.log(err);
     }
@@ -56,18 +52,18 @@ const LineChart = (props) => {
   const options = {
     chart: {
       type: "area",
-      height: 350,
+      height: "100%",
 
       toolbar: {
         autoSelected: "zoom",
       },
 
       animation: {
-        animations: {
-          enabled: true,
-          easing: "easeinout",
-          speed: 8000,
-        },
+        // animations: {
+        //   enabled: true,
+        //   easing: "easeinout",
+        //   speed: 8000,
+        // },
         initialAnimation: {
           enabled: true,
         },
@@ -80,6 +76,10 @@ const LineChart = (props) => {
       },
     },
 
+    dataLabels: {
+      enabled: false,
+    },
+
     stroke: {
       curve: "smooth",
       width: 3,
@@ -89,9 +89,9 @@ const LineChart = (props) => {
       type: "gradient",
       gradient: {
         shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
-        stops: [0, 100],
+        opacityFrom: 0.2,
+        opacityTo: 0.2,
+        stops: [100, 100],
       },
     },
 
@@ -110,7 +110,7 @@ const LineChart = (props) => {
     yaxis: {
       tickAmount: 4,
       labels: {
-        format: "HH:mm",
+        // format: "HH:mm",
         style: {
           colors: "#8e8da4",
         },
@@ -139,12 +139,13 @@ const LineChart = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.canvas}>
       <ReactApexChart
         options={options}
         series={series}
         type="area"
-        // height="250"
+        height="100%"
+        // width="100%"
       />
     </div>
   );

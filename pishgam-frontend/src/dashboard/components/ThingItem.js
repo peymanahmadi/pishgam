@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Card from "../../shared/components/FormElements/Card";
 import LineChart from "./chart/LineChart";
 // import Footer from "./footer/Footer";
@@ -14,11 +14,13 @@ const ThingItem = (props) => {
   //   setNewDate(date);
   // };
   return (
-    <Card>
-      <Header title={props.title} value={props.value} />
-      <LineChart colName={props.colName} newDate={props.date} />
-      {/* <Footer onChangeDate={onChangeDate} /> */}
-    </Card>
+    <div style={{ width: "100%", height: "400px" }}>
+      <Card>
+        <Header title={props.title} value={props.value} />
+        <LineChart colName={props.colName} newDate={props.date} />
+        {/* <Footer onChangeDate={onChangeDate} /> */}
+      </Card>
+    </div>
   );
 };
 
