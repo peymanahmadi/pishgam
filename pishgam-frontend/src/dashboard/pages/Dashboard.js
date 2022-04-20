@@ -72,10 +72,6 @@ const Dashboard = () => {
   }
   return (
     <div className={styles.container}>
-      {/* <div className={styles.header}>
-        <h3>Here is what's happening with your projects today:</h3>
-        <Flatpickr className={styles.flatPickr} options={options} />
-      </div> */}
       <Card className={styles.card}>
         <h3>Here is what's happening with your projects</h3>
         <Flatpickr className={styles.flatPickr} options={options} />

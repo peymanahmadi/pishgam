@@ -3,26 +3,18 @@
 .container {
   background: $lightGray;
   height: 100%;
-  // display: flex;
-  // justify-content: stretch;
-
-  .header {
-    border-top: 1px solid $lightGray;
-    background-color: white;
-    display: flex;
-    height: 3rem;
-    align-items: center;
-    justify-content: space-between;
-    // padding: 0 1rem;
-  }
 }
 
 .card {
-  // height: 100px;
   display: flex;
   background: $blue-2;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
   h3 {
     color: $darkBlue;

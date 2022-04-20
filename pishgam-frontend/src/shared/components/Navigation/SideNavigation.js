@@ -1,9 +1,9 @@
 import styles from "./SideNavigation.module.scss";
-import {
-  ProductsData,
-  ProjectsData,
-  CompanyData,
-} from "./MainNavigationData.js";
+// import {
+//   ProductsData,
+//   ProjectsData,
+//   CompanyData,
+// } from "./MainNavigationData.js";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Button from "../FormElements/Button";
@@ -27,7 +27,7 @@ const SideNavigation = (props) => {
     <>
       <div className={styles["side-navigation"]}>
         <div className={styles.menu}>
-          <div onClick={props.onClickOnMenu}>
+          <div className={styles.home} onClick={props.onClickOnMenu}>
             <NavLink to="/">Home</NavLink>
           </div>
 
@@ -71,7 +71,9 @@ const SideNavigation = (props) => {
           </div>
         </div>
         <div className={styles["things-button"]} onClick={props.onClickOnMenu}>
-          <Button>Things Dashboard</Button>
+          <NavLink to="dashboard/">
+            <Button>Things Dashboard</Button>
+          </NavLink>
         </div>
       </div>
     </>
