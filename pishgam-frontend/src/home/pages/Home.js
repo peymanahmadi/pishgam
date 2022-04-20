@@ -1,8 +1,8 @@
 import Landing from "../components/Landing";
-import Products from "../components/Products";
-import SocialNetworks from "../components/SocialNetworks";
-import ZigZagLayout from "../components/ZigZagLayout";
-import styles from "./Home.module.scss";
+// import Products from "../components/Products";
+// import SocialNetworks from "../components/SocialNetworks";
+// import ZigZagLayout from "../components/ZigZagLayout";
+// import styles from "./Home.module.scss";
 
 // import Button from "../../shared/components/FormElements/Button";
 
