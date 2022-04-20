@@ -36,7 +36,7 @@ const MainNavigation = () => {
             <MdOutlineMenu onClick={openDrawerHandler} />
           </div>
           <a href="/" className={styles.logo}>
-            <img src={Logo} alt="Pishgam" width="80px" height="60px" />
+            <img src={Logo} alt="Pishgam" />
             <h1>Things Solution</h1>
           </a>
         </div>

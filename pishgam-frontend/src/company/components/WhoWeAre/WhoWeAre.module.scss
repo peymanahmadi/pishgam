@@ -1,3 +1,5 @@
+@use "../../../shared/components/UIElements/UITheme" as *;
+
 .container {
   display: flex;
   flex: auto auto;
@@ -14,12 +16,15 @@
 
     h1 {
       margin-bottom: 1rem;
+      color: $darkBlue;
     }
 
     p {
+      font-weight: 100;
       font-size: large;
-      line-height: 2.5rem;
+      // line-height: 2.5rem;
       margin: 0.5rem 0;
+      color: $darkGray;
     }
   }
 
@@ -30,5 +35,20 @@
     img {
       width: 80%;
     }
+  }
+}
+
+.help {
+  h1 {
+    margin-bottom: 1rem;
+    color: $darkBlue;
+  }
+
+  p {
+    font-weight: 100;
+    font-size: large;
+    // line-height: 2.5rem;
+    margin: 0.5rem 0;
+    color: $darkGray;
   }
 }

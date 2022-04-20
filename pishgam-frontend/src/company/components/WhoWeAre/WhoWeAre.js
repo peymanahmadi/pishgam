@@ -8,32 +8,36 @@ const WhoWeAre = () => {
         <div className={styles.whoweare}>
           <h1>Our Mission</h1>
           <p>
-            Pishgam empowers cattle and poultry farms become digitalized and
-            data-driven, enabling then to make smart decision to improve animal
-            health
+            Things Solution is a cloud platform to empower your business by
+            digitalize and data-driven your current events, projects,
+            activities, ... enabling you to make smart decision to improve
           </p>
         </div>
         <div className={styles.image}>
           <img src={We} alt="" />
         </div>
       </div>
-      <h1>What we do</h1>
-      <p>
-        A team of three enthusiast hardware and software developers formed a
-        startup firm to help industries move forward to a new generation of
-        automation.
-      </p>
-      <h1>Our story</h1>
-      <p>
-        A team of three enthusiast hardware and software developers formed a
-        startup firm to help industries move forward to a new generation of
-        automation.
-      </p>
-      <p>
-        The solution we provide are a flexible and reliable automation based on
-        AI (Artificial Intelligence) as well as IoT(Internet of Things)
-        technologies.
-      </p>
+      <div className={styles.help}>
+        <h1>What we do</h1>
+        <p>
+          A team of three enthusiast hardware and software developers formed a
+          startup firm to help industries move forward to a new generation of
+          automation.
+        </p>
+      </div>
+      <div className={styles.help}>
+        <h1>Our story</h1>
+        <p>
+          A team of three enthusiast hardware and software developers formed a
+          startup firm to help industries move forward to a new generation of
+          automation.
+        </p>
+        <p>
+          The solution we provide are a flexible and reliable automation based
+          on AI (Artificial Intelligence) as well as IoT(Internet of Things)
+          technologies.
+        </p>
+      </div>
     </>
   );
 };

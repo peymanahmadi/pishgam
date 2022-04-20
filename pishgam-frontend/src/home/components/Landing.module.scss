@@ -4,6 +4,10 @@
   color: #5e6278;
   background: #f7f7f7;
 
+  @media screen and (max-width: 960px) {
+    flex-direction: column-reverse;
+  }
+
   .landing-image {
     // background-color: antiquewhite;
     position: absolute;
@@ -14,9 +18,23 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     img {
       width: 100%;
       margin-right: 5rem;
+    }
+
+    @media screen and (max-width: 960px) {
+      position: relative;
+      top: 10%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      display: block;
+
+      img {
+        margin-right: 0;
+      }
     }
   }
 
@@ -54,6 +72,18 @@
       span {
         color: #cd6a27;
         font-weight: 600;
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+
+      h1 {
+        width: 80%;
       }
     }
   }
