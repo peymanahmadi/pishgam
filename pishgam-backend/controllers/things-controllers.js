@@ -76,44 +76,67 @@ const getThingsByUserID = async (req, res, next) => {
 };
 
 const createThing = async (req, res, next) => {
+  console.log("Start to create");
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { colName, title, description, enabled } = req.body;
+  const { colName, title, description, enabled, creator } = req.body;
 
   const createdThing = new Thing({
     colName,
     title,
     description,
     enabled,
+    creator,
   });
 
-  // let user;
+  let user;
+  try {
+    user = await User.findById(creator);
+  } catch (err) {
+    const error = new HttpError("Creating thing failed, please try again", 500);
+    return next(error);
+  }
+
+  if (!user) {
+    const error = new HttpError("Could not find user for provided id", 404);
+    return next(error);
+  }
+
+  createdThing.users = creator;
+
+  // const session = await mongoose.startSession();
+  // session.startTransaction();
   // try {
-  //   user = await User.findById(creator);
-  // } catch (err) {
-  //   const error = new HttpError("Creating thing failed, please try again", 500);
-  //   return next(error);
+  //   await createdThing.save({ session });
+  //   await User.findByIdAndUpdate(
+  //     creator,
+  //     { things: createdThing },
+  //     (err, docs) => {
+  //       if (err) console.log(err);
+  //       else console.log(docs);
+  //     },
+  //     { session }
+  //   );
+  //   await session.commitTransaction();
+  //   console.log("ok");
+  // } catch (error) {
+  //   console.log(error);
+  //   await session.abortTransaction();
   // }
-
-  // if (!user) {
-  //   const error = new HttpError("Could not find user for provided id", 404);
-  //   return next(error);
-  // }
-
-  // createdThing.users = creator;
+  // session.endSession();
 
   try {
     await createdThing.save();
-    // const sess = await mongoose.startSession();
-    // sess.startTransaction();
-    // await createdThing.save({ sesseion: sess });
-    // user.things.push(createdThing);
-    // await user.save({ session: sess });
-    // sess.commitTransaction();
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await createdThing.save({ sesseion: sess });
+    user.things.push(createdThing);
+    await user.save({ session: sess });
+    sess.commitTransaction();
   } catch (err) {
     // const error = new HttpError("Creating thing failed, please try again", 500);
     const error = new HttpError(err, 500);
