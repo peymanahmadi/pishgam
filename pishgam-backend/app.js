@@ -45,7 +45,9 @@ mongoose
     "mongodb://thingsso_user:881510066Arm@thingssolution.com:27017/thingsso_db"
   )
   .then(() => {
-    app.listen(4475);
+    app.listen(4475, () => {
+      console.log("successfully conntected to mongodb");
+    });
   })
   .catch((err) => {
     console.log(err);

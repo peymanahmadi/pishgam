@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
+
 const { validationResult } = require("express-validator");
 const Thing = require("../models/thing");
 const User = require("../models/user");
@@ -89,6 +91,8 @@ const createThing = async (req, res, next) => {
     colName,
     title,
     description,
+    apiWriteKey: uuidv4(),
+    apiReadKey: uuidv4(),
     enabled,
     creator,
   });
@@ -107,27 +111,6 @@ const createThing = async (req, res, next) => {
   }
 
   createdThing.users = creator;
-
-  // const session = await mongoose.startSession();
-  // session.startTransaction();
-  // try {
-  //   await createdThing.save({ session });
-  //   await User.findByIdAndUpdate(
-  //     creator,
-  //     { things: createdThing },
-  //     (err, docs) => {
-  //       if (err) console.log(err);
-  //       else console.log(docs);
-  //     },
-  //     { session }
-  //   );
-  //   await session.commitTransaction();
-  //   console.log("ok");
-  // } catch (error) {
-  //   console.log(error);
-  //   await session.abortTransaction();
-  // }
-  // session.endSession();
 
   try {
     await createdThing.save();

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
 const HttpError = require("../models/http-error");
+const Thing = require("../models/thing");
 
 const Schema = mongoose.Schema;
 
@@ -12,6 +13,22 @@ var thingSchema = new Schema({
 const setThingValue = async (req, res, next) => {
   let title = req.query.title;
   let value = req.query.value;
+  let apiWriteKey = req.query.apikey;
+
+  let thing;
+  try {
+    thing = await Thing.findOne({ colName: title }, "apiWriteKey");
+    console.log(thing.apiWriteKey);
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError(err, 500);
+    return next(error);
+  }
+
+  if (apiWriteKey !== thing.apiWriteKey) {
+    const err = new HttpError("apiWriteKey is invalid", 500);
+    return next(err);
+  }
 
   let thingModel = mongoose.model(title, thingSchema);
 
@@ -20,7 +37,7 @@ const setThingValue = async (req, res, next) => {
     setAt: moment(),
   });
 
-  console.log(moment().locale());
+  // console.log(moment().locale());
 
   let thingValue;
   try {
