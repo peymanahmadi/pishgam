@@ -6,6 +6,7 @@ import "flatpickr/dist/flatpickr.css";
 import ThingsList from "../components/ThingsList";
 import styles from "./Dashboard.module.scss";
 import Card from "../../shared/components/FormElements/Card";
+import Register from "../components/user/Register";
 
 const Dashboard = () => {
   const [things, setThings] = useState([]);
@@ -71,13 +72,16 @@ const Dashboard = () => {
     content = <p>Loading...</p>;
   }
   return (
-    <div className={styles.container}>
-      <Card className={styles.card}>
-        <h3>Here is what's happening with your projects</h3>
-        <Flatpickr className={styles.flatPickr} options={options} />
-      </Card>
-      <section>{content}</section>
-    </div>
+    <>
+      <Register />
+      {/* <div className={styles.container}>
+        <Card className={styles.card}>
+          <h3>Here is what's happening with your projects</h3>
+          <Flatpickr className={styles.flatPickr} options={options} />
+        </Card>
+        <section>{content}</section>
+      </div> */}
+    </>
   );
 };
 
