@@ -5,10 +5,13 @@ const Button = (props) => {
     <button
       className={`${styles.button} ${props.inverse && styles.inverse} ${
         props.small && styles.small
-      } ${props.shaddow && styles.shaddow}`}
+      } ${props.shadow && styles.shadow} ${
+        props.btnBlock && styles["btn-block"]
+      }`}
       type={props.type}
       onClick={props.onClick}
       disabled={props.disabled}
+      style={props.style}
     >
       {props.children}
     </button>
