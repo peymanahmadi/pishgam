@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Alert from "../../../shared/components/FormElements/Alert";
 import Button from "../../../shared/components/FormElements/Button";
 import FormRow from "../../../shared/components/FormElements/FormRow";
 import styles from "./Register.module.scss";
@@ -8,7 +9,7 @@ const initialState = {
   email: "",
   password: "",
   isMember: true,
-  showAlert: false,
+  showAlert: true,
 };
 
 const Register = () => {
@@ -31,6 +32,7 @@ const Register = () => {
     <section className={styles["register-page"]}>
       <form onSubmit={onSubmit}>
         <h3>{values.isMember ? "Login" : "Register"}</h3>
+        {values.showAlert && <Alert danger />}
         {/* name input */}
         {!values.isMember && (
           <FormRow
