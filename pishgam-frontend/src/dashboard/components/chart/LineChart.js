@@ -1,9 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import io from "socket.io-client";
 import styles from "./LineChart.module.scss";
+const socket = io.connect("http://localhost:4475");
 // import silo from "./silo.json";
 
 const LineChart = (props) => {
+  const sendMessage = () => {
+    socket.emit("send_message", { message: "hello" });
+  };
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      alert(data.message);
+    });
+  }, [socket]);
   const [thingValues, setThingValues] = useState([]);
   // var today = new Date();
   // var todayDate =
@@ -153,6 +164,7 @@ const LineChart = (props) => {
         height="100%"
         // width="100%"
       />
+      <button onClick={sendMessage}>Refresh</button>
     </div>
   );
 };

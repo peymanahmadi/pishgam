@@ -7,7 +7,28 @@ const categoriesRoutes = require("./routes/categories-routes");
 const thingRoutes = require("./routes/thing-route");
 const HttpError = require("./models/http-error");
 
+//
+const http = require("http");
+const { Server } = require("socket.io");
 const app = express();
+const cors = require("cors");
+const server = http.createServer(app);
+app.use(cors);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
+  socket.on("send_message", (data) => {
+    // console.log(data);
+    socket.broadcast.emit("receive_message", data);
+  });
+});
+//
 
 app.use(express.json());
 
@@ -45,7 +66,7 @@ mongoose
     "mongodb://thingsso_user:881510066Arm@thingssolution.com:27017/thingsso_db"
   )
   .then(() => {
-    app.listen(4475, () => {
+    server.listen(4475, () => {
       console.log("successfully conntected to mongodb");
     });
   })
