@@ -37,7 +37,7 @@ const setThingValue = async (req, res, next) => {
     setAt: moment(),
   });
 
-  // console.log(moment().locale());
+  // console.log(moment().format());
 
   let thingValue;
   try {
@@ -57,7 +57,7 @@ const getThingValueByDate = async (req, res, next) => {
 
   let thingModel = mongoose.model(thingID, thingSchema);
 
-  console.log(valueDate);
+  console.log(moment(valueDate));
   console.log(moment(valueDate).add(1, "days"));
 
   let thingData;
@@ -68,7 +68,7 @@ const getThingValueByDate = async (req, res, next) => {
       //   $lte: moment(today).endOf("day").toDate(),
       // },
       setAt: {
-        $gte: new Date(valueDate),
+        $gte: new Date(moment(valueDate)),
         $lte: moment(valueDate).add(1, "days"),
       },
     });

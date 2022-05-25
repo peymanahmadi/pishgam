@@ -62,6 +62,7 @@ const Dashboard = () => {
   let content = <p>Found no things.</p>;
   if (things.length > 0) {
     content = <ThingsList date={date} items={things} />;
+    console.log("Date: " + date);
   }
 
   if (error) {
@@ -73,14 +74,14 @@ const Dashboard = () => {
   }
   return (
     <>
-      <Register />
-      {/* <div className={styles.container}>
+      {/* <Register /> */}
+      <div className={styles.container}>
         <Card className={styles.card}>
           <h3>Here is what's happening with your projects</h3>
           <Flatpickr className={styles.flatPickr} options={options} />
         </Card>
         <section>{content}</section>
-      </div> */}
+      </div>
     </>
   );
 };

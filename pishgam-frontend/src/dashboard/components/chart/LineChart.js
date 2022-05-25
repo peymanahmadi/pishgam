@@ -32,6 +32,10 @@ const LineChart = (props) => {
           dt: thingValue.setAt,
         };
       });
+
+      const lastValue = Object.values(transformedThingValues).pop();
+      console.log(lastValue.value);
+
       setThingValues(transformedThingValues);
     } catch (err) {
       console.log(err);
@@ -48,6 +52,8 @@ const LineChart = (props) => {
       data: thingValues.map((value) => value.value),
     },
   ];
+
+  console.log(series.data);
 
   const options = {
     chart: {
