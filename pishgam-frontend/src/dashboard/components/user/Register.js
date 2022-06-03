@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAppContext } from "../../../context/appContext";
 import Alert from "../../../shared/components/FormElements/Alert";
 import Button from "../../../shared/components/FormElements/Button";
 import FormRow from "../../../shared/components/FormElements/FormRow";
@@ -9,11 +10,11 @@ const initialState = {
   email: "",
   password: "",
   isMember: true,
-  showAlert: true,
 };
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
+  const { isLoading, showAlert } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -32,7 +33,7 @@ const Register = () => {
     <section className={styles["register-page"]}>
       <form onSubmit={onSubmit}>
         <h3>{values.isMember ? "Login" : "Register"}</h3>
-        {values.showAlert && <Alert danger />}
+        {showAlert && <Alert danger />}
         {/* name input */}
         {!values.isMember && (
           <FormRow

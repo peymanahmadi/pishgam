@@ -77,6 +77,8 @@ const getThingValueByDate = async (req, res, next) => {
     return next(error);
   }
 
+  res.io.emit("Hello", value);
+
   res.json({
     thingValues: thingData.map((thing) => thing.toObject({ getters: true })),
   });

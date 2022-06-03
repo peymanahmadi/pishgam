@@ -7,14 +7,25 @@ const socket = io.connect("http://localhost:4475");
 
 const LineChart = (props) => {
   const sendMessage = () => {
-    socket.emit("send_message", { message: "hello" });
+    socket.emit("send_message", { message: "get_weight" });
   };
+
+  const createChart = () => {};
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
       alert(data.message);
+      console.log(socket.id);
+    });
+    socket.on("connect", () => {
+      console.log(socket.id);
+      console.log(socket.connected);
     });
   }, [socket]);
+  // socket.on("connect", () => {
+  //   console.log(socket.id);
+  //   console.log(socket.connected);
+  // });
   const [thingValues, setThingValues] = useState([]);
   // var today = new Date();
   // var todayDate =
@@ -44,8 +55,8 @@ const LineChart = (props) => {
         };
       });
 
-      const lastValue = Object.values(transformedThingValues).pop();
-      console.log(lastValue.value);
+      // const lastValue = Object.values(transformedThingValues).pop();
+      // console.log(lastValue.value);
 
       setThingValues(transformedThingValues);
     } catch (err) {
@@ -64,7 +75,7 @@ const LineChart = (props) => {
     },
   ];
 
-  console.log(series.data);
+  // console.log(series.data);
 
   const options = {
     chart: {
@@ -165,6 +176,7 @@ const LineChart = (props) => {
         // width="100%"
       />
       <button onClick={sendMessage}>Refresh</button>
+      <button onClick={createChart}>Chart</button>
     </div>
   );
 };

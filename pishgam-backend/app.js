@@ -24,11 +24,10 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
   socket.on("send_message", (data) => {
-    // console.log(data);
+    console.log(data);
     socket.broadcast.emit("receive_message", data);
   });
 });
-//
 
 app.use(express.json());
 
@@ -40,6 +39,11 @@ app.use((req, res, next) => {
   );
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
 
+  next();
+});
+
+app.use((req, res, next) => {
+  res.io = io;
   next();
 });
 
@@ -70,6 +74,11 @@ mongoose
       console.log("successfully conntected to mongodb");
     });
   })
+  // .then(() => {
+  //   app.listen(4475, () => {
+  //     console.log("successfully conntected to mongodb");
+  //   });
+  // })
   .catch((err) => {
     console.log(err);
   });
