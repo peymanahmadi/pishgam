@@ -1,5 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+
+const connectDB = require("./db/connect");
 
 const thingsRoutes = require("./routes/things-routes");
 const usersRoutes = require("./routes/users-routes");
@@ -7,7 +11,8 @@ const categoriesRoutes = require("./routes/categories-routes");
 const thingRoutes = require("./routes/thing-route");
 const HttpError = require("./models/http-error");
 
-const app = express();
+// middleware
+
 app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -37,15 +42,17 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occured!" });
 });
 
-mongoose
-  .connect(
-    "mongodb://thingsso_user:881510066Arm@thingssolution.com:27017/thingsso_db"
-  )
-  .then(() => {
-    app.listen(4475, () => {
-      console.log("successfully conntected to mongodb");
+const port = process.env.PORT || 4475;
+
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URL);
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}...`);
     });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
