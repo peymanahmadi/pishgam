@@ -3,7 +3,7 @@ const { validationResult } = require("express-validator");
 const HttpError = require("../models/http-error");
 
 const Category = require("../models/category");
-const User = require("../models/user");
+const User = require("../models/User");
 
 const getCategories = async (req, res, next) => {
   let categories;

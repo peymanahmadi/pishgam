@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const { validationResult } = require("express-validator");
 const Thing = require("../models/thing");
-const User = require("../models/user");
+const User = require("../models/User");
 const Category = require("../models/category");
 const HttpError = require("../models/http-error");
 const thing = require("../models/thing");

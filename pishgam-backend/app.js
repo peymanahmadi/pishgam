@@ -3,7 +3,11 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
+// db and authenticateUser
 const connectDB = require("./db/connect");
+
+// routers
+const authRouter = require("./routes/authRoutes");
 
 const thingsRoutes = require("./routes/things-routes");
 const usersRoutes = require("./routes/users-routes");
@@ -23,6 +27,8 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
   next();
 });
+
+app.use("/api/v1/auth", authRouter);
 
 app.use("/api/v1/things", thingsRoutes);
 app.use("/api/v1/users", usersRoutes);
