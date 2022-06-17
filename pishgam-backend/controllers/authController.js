@@ -1,12 +1,34 @@
-const register = (req, res) => {
-  res.send("register user");
+const User = require("../models/User");
+const { BadRequestError } = require("../errors/index");
+
+const register = async (req, res, next) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    const error = new BadRequestError("Please provide all values");
+    return next(error);
+  }
+
+  const userAlreadyExists = await User.findOne({ email });
+  if (userAlreadyExists) {
+    const error = new BadRequestError("Email already in use");
+    return next(error);
+  }
+
+  try {
+    const user = await User.create({ name, email, password });
+    res.status(201).json({ user });
+  } catch (err) {
+    const error = new Error(err);
+    return next(error);
+  }
 };
 
-const login = (req, res) => {
+const login = async (req, res) => {
   res.send("login user");
 };
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   res.send("updateUser user");
 };
 
