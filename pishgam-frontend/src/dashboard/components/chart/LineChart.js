@@ -175,8 +175,8 @@ const LineChart = (props) => {
         height="100%"
         // width="100%"
       />
-      <button onClick={sendMessage}>Refresh</button>
-      <button onClick={createChart}>Chart</button>
+      {/* <button onClick={sendMessage}>Refresh</button>
+      <button onClick={createChart}>Chart</button> */}
     </div>
   );
 };

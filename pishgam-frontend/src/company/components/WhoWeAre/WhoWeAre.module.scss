@@ -1,54 +1,93 @@
 @use "../../../shared/components/UIElements/UITheme" as *;
 
-.container {
-  display: flex;
-  flex: auto auto;
-  max-width: 100%;
-  justify-content: space-around;
-  min-height: calc(100% - 85px);
-  //   background-color: burlywood;
+.whoweare-page {
+  display: grid;
   align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 4.5rem);
+  // background-color: cadetblue;
 
-  .whoweare {
-    width: 45%;
+  .our-mission {
+    width: 90vw;
+    max-width: $max-width;
+    // background-color: bisque;
+    display: flex;
+    flex: auto auto;
+    // max-width: 100%;
+    justify-content: space-around;
+    min-height: calc(100% - 85px);
+    align-items: center;
+
+    .whoweare {
+      width: 45%;
+      padding: 1rem 1rem;
+      // background-color: chocolate;
+
+      h1 {
+        margin-bottom: 1rem;
+        color: $darkBlue;
+        // background-color: aqua;
+      }
+
+      p {
+        font-weight: 100;
+        font-size: large;
+        // line-height: 2.5rem;
+        margin: 0.5rem 0;
+        color: $darkGray;
+        line-height: 2.5rem;
+        // background-color: antiquewhite;
+      }
+    }
+
+    .image {
+      width: 45%;
+      // max-width: 45%;
+      // background-color: chocolate;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 80%;
+        // background-color: blue;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      // background-color: aqua;
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+
+      .whoweare {
+        width: 100vw;
+      }
+
+      .image {
+        width: 100vw;
+      }
+    }
+  }
+
+  .help {
+    width: 90%;
     padding: 1rem 1rem;
-    // background-color: chocolate;
-
     h1 {
       margin-bottom: 1rem;
       color: $darkBlue;
+      text-align: center;
     }
 
     p {
+      width: 90%;
       font-weight: 100;
       font-size: large;
       // line-height: 2.5rem;
       margin: 0.5rem 0;
       color: $darkGray;
+      text-align: center;
+      line-height: 2.5rem;
+      background: chocolate;
     }
-  }
-
-  .image {
-    max-width: 45%;
-    // background-color: chocolate;
-
-    img {
-      width: 80%;
-    }
-  }
-}
-
-.help {
-  h1 {
-    margin-bottom: 1rem;
-    color: $darkBlue;
-  }
-
-  p {
-    font-weight: 100;
-    font-size: large;
-    // line-height: 2.5rem;
-    margin: 0.5rem 0;
-    color: $darkGray;
   }
 }
