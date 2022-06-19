@@ -1,38 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import io from "socket.io-client";
 import styles from "./LineChart.module.scss";
-const socket = io.connect("http://localhost:4475");
-// import silo from "./silo.json";
 
 const LineChart = (props) => {
-  const sendMessage = () => {
-    socket.emit("send_message", { message: "get_weight" });
-  };
-
-  const createChart = () => {};
-
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      alert(data.message);
-      console.log(socket.id);
-    });
-    socket.on("connect", () => {
-      console.log(socket.id);
-      console.log(socket.connected);
-    });
-  }, [socket]);
-  // socket.on("connect", () => {
-  //   console.log(socket.id);
-  //   console.log(socket.connected);
-  // });
   const [thingValues, setThingValues] = useState([]);
-  // var today = new Date();
-  // var todayDate =
-  //   today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  // const [todayValue, setTodayValue] = useState(todayDate);
-
-  // console.log(todayDate);
 
   const fetchThingValues = useCallback(async () => {
     try {

@@ -38,6 +38,7 @@ app.use("/api/v1/categories", categoriesRoutes);
 app.use("/api/v1/thing", thingRoutes);
 
 app.use((req, res, next) => {
+  console.log(req.url);
   const error = new HttpError("Could not find this route.", 404);
   throw error;
 });

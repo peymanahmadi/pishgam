@@ -6,7 +6,7 @@ import "flatpickr/dist/flatpickr.css";
 import ThingsList from "../components/ThingsList";
 import styles from "./Dashboard.module.scss";
 import Card from "../../shared/components/FormElements/Card";
-import Register from "../components/user/Register";
+// import Register from "../components/user/Register";
 
 const Dashboard = () => {
   const [things, setThings] = useState([]);
