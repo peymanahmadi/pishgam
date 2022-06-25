@@ -27,7 +27,7 @@ const register = async (req, res, next) => {
   }
 };
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     const error = new BadRequestError("Please provide all values");
