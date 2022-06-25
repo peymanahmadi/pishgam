@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const { BadRequestError } = require("../errors/index");
+const { BadRequestError, UnAuthenticatedError } = require("../errors/index");
 
 const register = async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -28,7 +28,26 @@ const register = async (req, res, next) => {
 };
 
 const login = async (req, res) => {
-  res.send("login user");
+  const { email, password } = req.body;
+  if (!email || !password) {
+    const error = new BadRequestError("Please provide all values");
+    return next(error);
+  }
+  const user = await User.findOne({ email }).select("+password");
+  if (!user) {
+    const error = new UnAuthenticatedError("Invalid Credentials");
+    return next(error);
+  }
+
+  const isPasswordCorrect = await user.comparePassword(password);
+  if (!isPasswordCorrect) {
+    const error = new UnAuthenticatedError("Invalid Credentials");
+    return next(error);
+  }
+
+  const token = user.createJWT();
+  user.password = undefined;
+  res.status(200).json({ user, token });
 };
 
 const updateUser = async (req, res) => {

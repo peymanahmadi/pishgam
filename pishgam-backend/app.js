@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
+const morgan = require("morgan");
 
 // db and authenticateUser
 const connectDB = require("./db/connect");
@@ -18,6 +19,10 @@ const HttpError = require("./models/http-error");
 // middleware
 
 const errorHandlerMiddleware = require("./middleware/error-handler");
+
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 
 app.use(express.json());
 app.use((req, res, next) => {
