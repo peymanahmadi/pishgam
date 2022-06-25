@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { useAppContext } from "../../../context/appContext";
-import Alert from "../../../shared/components/FormElements/Alert";
-import Button from "../../../shared/components/FormElements/Button";
-import FormRow from "../../../shared/components/FormElements/FormRow";
+import { useState, useEffect } from "react";
+import { useAppContext } from "../context/appContext";
+import Alert from "../shared/components/FormElements/Alert";
+import Button from "../shared/components/FormElements/Button";
+import FormRow from "../shared/components/FormElements/FormRow";
 import styles from "./Register.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -14,7 +15,9 @@ const initialState = {
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
-  const { isLoading, showAlert, displayAlert } = useAppContext();
+  const navigate = useNavigate();
+  const { user, isLoading, showAlert, displayAlert, registerUser } =
+    useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -31,8 +34,21 @@ const Register = () => {
       displayAlert();
       return;
     }
-    console.log(values);
+    const currentUser = { name, email, password };
+    if (isMember) {
+      console.log("already a member");
+    } else {
+      registerUser(currentUser);
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
+    }
+  }, [user, navigate]);
 
   return (
     <section className={styles["register-page"]}>
@@ -63,7 +79,13 @@ const Register = () => {
           value={values.password}
           handleChange={handleChange}
         />
-        <Button type="submit" btnBlock shadow style={{ marginTop: "1rem" }}>
+        <Button
+          type="submit"
+          btnBlock
+          shadow
+          style={{ marginTop: "1rem" }}
+          disabled={isLoading}
+        >
           submit
         </Button>
         <p>

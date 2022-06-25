@@ -17,6 +17,11 @@
   &:hover {
     background: $blue-700;
   }
+
+  &:disabled {
+    background-color: $blue-500;
+    cursor: not-allowed;
+  }
 }
 
 .inverse {

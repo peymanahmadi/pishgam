@@ -74,7 +74,6 @@ const Dashboard = () => {
   }
   return (
     <>
-      {/* <Register /> */}
       <div className={styles.container}>
         <Card className={styles.card}>
           <h3>Here is what's happening with your projects</h3>

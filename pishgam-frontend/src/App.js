@@ -3,6 +3,7 @@ import Company from "./company/pages/Company";
 import Dashboard from "./dashboard/pages/Dashboard";
 import Home from "./home/pages/Home";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import Register from "./user/Register";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/company/whoweare" element={<Company />} />
           <Route path="/dashboard/" element={<Dashboard />} />
           {/* <main> */}
