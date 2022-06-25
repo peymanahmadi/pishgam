@@ -54,7 +54,7 @@ const Register = () => {
     <section className={styles["register-page"]}>
       <form onSubmit={onSubmit}>
         <h3>{values.isMember ? "Login" : "Register"}</h3>
-        {showAlert && <Alert danger />}
+        {showAlert && <Alert />}
         {/* name input */}
         {!values.isMember && (
           <FormRow

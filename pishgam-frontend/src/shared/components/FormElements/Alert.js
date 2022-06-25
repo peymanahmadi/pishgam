@@ -5,7 +5,11 @@ const Alert = (props) => {
   const { alertType, alertText } = useAppContext();
 
   return (
-    <div className={`${styles.alert} ${props.danger && styles.danger}`}>
+    <div
+      className={`${styles.alert}  ${
+        alertType === "danger" ? styles.danger : styles.success
+      }`}
+    >
       {alertText}
     </div>
   );

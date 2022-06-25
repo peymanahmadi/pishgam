@@ -37,7 +37,7 @@ const reducer = (state, action) => {
       user: action.payload.user,
       showAlert: true,
       alertType: "success",
-      laertText: "User Created! Redirecting...",
+      alertText: "User Created! Redirecting...",
     };
   }
   if (action.type === REGISTER_USER_ERROR) {
