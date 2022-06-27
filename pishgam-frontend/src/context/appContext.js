@@ -53,7 +53,8 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN });
     try {
       const { data } = await axios.post(
-        `http://localhost:4475/api/v1/auth/${endPoint}`,
+        `https://api.thingssolution.com/api/v1/auth/${endPoint}`,
+        // `/api/v1/auth/${endPoint}`,
         currentUser
       );
       // console.log(response);

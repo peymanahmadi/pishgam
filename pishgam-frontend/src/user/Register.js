@@ -96,7 +96,7 @@ const Register = () => {
         >
           submit
         </Button>
-        <p>
+        {/* <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
           <button
             type="button"
@@ -105,7 +105,7 @@ const Register = () => {
           >
             {values.isMember ? "Register" : "Login"}
           </button>
-        </p>
+        </p> */}
       </form>
     </section>
   );
