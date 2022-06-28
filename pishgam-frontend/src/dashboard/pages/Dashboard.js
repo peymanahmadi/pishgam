@@ -62,7 +62,7 @@ const Dashboard = () => {
   let content = <p>Found no things.</p>;
   if (things.length > 0) {
     content = <ThingsList date={date} items={things} />;
-    console.log("Date: " + date);
+    // console.log("Date: " + date);
   }
 
   if (error) {

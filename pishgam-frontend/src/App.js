@@ -4,6 +4,7 @@ import Dashboard from "./dashboard/pages/Dashboard";
 import Home from "./home/pages/Home";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Register from "./user/Register";
+import ProtectedRoute from "./dashboard/ProtectedRoute";
 
 const App = () => {
   return (
@@ -14,7 +15,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/company/whoweare" element={<Company />} />
-          <Route path="/dashboard/" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           {/* <main> */}
           {/* <Route path="/" element={<Home />} />
         <Route path="/products/batchingsystem" element={<BatchingSystem />} />
