@@ -1,0 +1,24 @@
+@use "../abstracts/index" as *;
+
+.logo {
+  display: flex;
+  margin-left: 20px;
+  gap: 0.5rem;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+
+  h3 {
+    font-family: $Ubuntu;
+    color: $blue-700;
+    font-weight: 500;
+    span {
+      color: $blue-50;
+    }
+  }
+}

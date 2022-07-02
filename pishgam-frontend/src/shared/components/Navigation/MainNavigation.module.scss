@@ -11,6 +11,7 @@
   z-index: 5;
   // box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   // border-bottom: 1px solid rgb(211, 211, 211);
+  justify-content: space-between;
 
   @media screen and (max-width: 1024px) {
     height: 4rem;
@@ -27,46 +28,18 @@
 
       svg {
         font-size: 2rem;
-        color: $darkGray;
+        color: $blue-700;
       }
 
       @media screen and (max-width: 1024px) {
         display: inline-block;
       }
     }
-
-    .logo {
-      margin-left: 20px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-
-      @media screen and (max-width: 1024px) {
-        img {
-          width: 68px;
-          height: 51px;
-        }
-        h1 {
-          font-size: 1.25rem;
-        }
-      }
-
-      img {
-        width: 80px;
-        height: 60px;
-      }
-
-      h1 {
-        font-weight: 400;
-        color: $lightBlue;
-      }
-    }
   }
 
   .navbtn {
-    width: 100%;
-    margin-right: 20px;
+    // width: 100%;
+    // margin-right: 20px;
     display: flex;
     justify-content: space-between;
 
@@ -75,9 +48,21 @@
     }
 
     .navmenu {
-      margin-left: 50px;
+      // margin-left: 50px;
       display: flex;
       align-items: center;
+    }
+  }
+
+  .dashboard-menu {
+    // margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    svg {
+      font-size: 1.5rem;
+      color: $blue-700;
     }
   }
 }

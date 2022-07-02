@@ -29,3 +29,18 @@ export const CompanyData = [
     to: "/company/whoweare",
   },
 ];
+
+export const Languages = [
+  {
+    id: "1",
+    category: "",
+    title: "فارسی",
+    to: "/",
+  },
+  {
+    id: "2",
+    category: "",
+    title: "English",
+    to: "/",
+  },
+];

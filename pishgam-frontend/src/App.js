@@ -5,6 +5,7 @@ import Home from "./home/pages/Home";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Register from "./user/Register";
 import ProtectedRoute from "./dashboard/ProtectedRoute";
+import "./shared/sass/main.scss";
 
 const App = () => {
   return (

@@ -1,0 +1,17 @@
+// @use "./base/index" as *;
+@use "./abstracts/index" as a;
+@use "./components/index" as c;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: a.$background-color;
+  font-family: a.$Ubuntu;
+  font-weight: 400;
+  line-height: 1.75;
+  color: a.$text-color;
+}

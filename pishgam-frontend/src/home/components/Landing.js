@@ -12,11 +12,11 @@ const Landing = () => {
             <span>Things Solution!</span>
           </h1>
           <div>
-            <h3>We give you full control and visibility of your</h3>
-            <h3>
+            <p>We give you full control and visibility of your</p>
+            <p>
               <span>Operations</span>, <span>Plans</span>,{" "}
               <span>Strategies</span>, and <span>Products</span>.
-            </h3>
+            </p>
           </div>
           <div className={styles.btn}>
             <Button>Know More</Button>

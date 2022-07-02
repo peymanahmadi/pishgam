@@ -1,0 +1,6 @@
+@use "../abstracts/index" as *;
+.nav {
+  height: $nav-height;
+  display: flex;
+  align-items: center;
+}
