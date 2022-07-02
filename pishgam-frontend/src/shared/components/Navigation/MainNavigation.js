@@ -53,8 +53,8 @@ const MainNavigation = () => {
         <div className={styles.navbtn}>
           <div className={styles.navmenu}>
             <MenuItem to="/" title="Home" />
-            <MegaMenuItem title="Products" data={ProductsData} />
-            <MegaMenuItem title="Startup Projects" data={ProjectsData} />
+            {/* <MegaMenuItem title="Products" data={ProductsData} /> */}
+            {/* <MegaMenuItem title="Startup Projects" data={ProjectsData} /> */}
             <MegaMenuItem title="Company" data={CompanyData} />
           </div>
         </div>
