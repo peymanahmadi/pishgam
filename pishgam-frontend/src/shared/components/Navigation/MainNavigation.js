@@ -8,9 +8,9 @@ import MenuItem from "./components/MenuItem/MenuItem";
 import MegaMenuItem from "./components/MegaMenuItem/MegaMenuItem";
 import {
   ProductsData,
-  ProjectsData,
+  // ProjectsData,
   CompanyData,
-  Languages,
+  // Languages,
 } from "./MainNavigationData";
 import SideDrawer from "./SideDrawer";
 import SideNavigation from "./SideNavigation";
@@ -44,10 +44,6 @@ const MainNavigation = () => {
             <MdOutlineMenu onClick={openDrawerHandler} />
           </div>
           <Logo href="/" />
-          {/* <a href="/" className={styles.logo}>
-            <img src={Logo} alt="Pishgam" />
-            <h1>Things Solution</h1>
-          </a> */}
         </div>
 
         <div className={styles.navbtn}>
@@ -56,22 +52,26 @@ const MainNavigation = () => {
             <MegaMenuItem title="Products" data={ProductsData} />
             {/* <MegaMenuItem title="Startup Projects" data={ProjectsData} /> */}
             <MegaMenuItem title="Company" data={CompanyData} />
-            {/* <MenuItem to="/dashboard" title="Things Dashboard" /> */}
+            <div>
+              <NavLink to="dashboard/">
+                <Button small>Things Dashboard</Button>
+              </NavLink>
+            </div>
           </div>
         </div>
 
         <div className={styles["dashboard-menu"]}>
-          <div>
-            <NavLink to="dashboard/">
-              <Button>Things Dashboard</Button>
-            </NavLink>
-          </div>
-          <div style={{ display: "flex" }}>
+          <div
+            style={{ display: "flex", margin: "0.25rem 0rem", gap: "0.5rem" }}
+          >
             {/* <MegaMenuItem title={<MdOutlineLanguage />} data={Languages} /> */}
-            <button>
+            <Button small inverse>
+              <MdOutlineLanguage />
+            </Button>
+            <Button small inverse>
               <FaUserCircle />
               Login
-            </button>
+            </Button>
             {/* <MegaMenuItem title={<FaUserCircle />} data={CompanyData} /> */}
           </div>
         </div>

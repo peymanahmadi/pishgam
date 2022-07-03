@@ -13,23 +13,36 @@
   display: inline-block;
 
   &:hover {
-    background: $blue-700;
+    background: $blue-900;
     box-shadow: $shadow-3;
+
+    // svg {
+    //   color: $blue-1;
+    // }
   }
 }
 
 .inverse {
-  color: $green;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $blue-900;
   background: $white;
-  border: 1px solid $blue-500;
+  border: 1px solid $blue-900;
+  border-radius: 0;
   &:hover {
     color: $white;
-    background: $blue-500;
+    background: $blue-900;
+    color: $blue-900;
+    background: $white;
+    // svg {
+    //   color: $blue-1;
+    // }
   }
 }
 
 .small {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 .shadow {
