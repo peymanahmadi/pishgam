@@ -53,9 +53,10 @@ const MainNavigation = () => {
         <div className={styles.navbtn}>
           <div className={styles.navmenu}>
             <MenuItem to="/" title="Home" />
-            {/* <MegaMenuItem title="Products" data={ProductsData} /> */}
+            <MegaMenuItem title="Products" data={ProductsData} />
             {/* <MegaMenuItem title="Startup Projects" data={ProjectsData} /> */}
             <MegaMenuItem title="Company" data={CompanyData} />
+            {/* <MenuItem to="/dashboard" title="Things Dashboard" /> */}
           </div>
         </div>
 
@@ -66,8 +67,12 @@ const MainNavigation = () => {
             </NavLink>
           </div>
           <div style={{ display: "flex" }}>
-            <MegaMenuItem title={<MdOutlineLanguage />} data={Languages} />
-            <MegaMenuItem title={<FaUserCircle />} data={CompanyData} />
+            {/* <MegaMenuItem title={<MdOutlineLanguage />} data={Languages} /> */}
+            <button>
+              <FaUserCircle />
+              Login
+            </button>
+            {/* <MegaMenuItem title={<FaUserCircle />} data={CompanyData} /> */}
           </div>
         </div>
       </nav>

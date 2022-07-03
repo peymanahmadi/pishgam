@@ -1,11 +1,17 @@
 import { NavLink } from "react-router-dom";
 
-import styles from "./SubMenu.module.scss";
+// import styles from "./SubMenu.module.scss";
 
 const SubMenu = (props) => {
   return (
     <>
-      <div className={styles.submenu}>
+      {/* <div className={styles.submenu}>
+        <NavLink to={props.to}>
+          <span>{props.category}</span>
+          {props.title}
+        </NavLink>
+      </div> */}
+      <div className="submenu-item">
         <NavLink to={props.to}>
           <span>{props.category}</span>
           {props.title}

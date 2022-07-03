@@ -8,8 +8,8 @@ export const ProductsData = [
   {
     id: "2",
     category: "Internet of Things (IoT)",
-    title: "Weighing System",
-    to: "/products/weighingsystem",
+    title: "IoT SIM Card Module",
+    to: "/products/iotsimcard",
   },
 ];
 export const ProjectsData = [

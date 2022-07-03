@@ -1,0 +1,24 @@
+@use "../abstracts/index" as *;
+
+.submenu {
+  width: 20rem;
+
+  a {
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: $blue-900;
+    transition: $transition;
+
+    &:hover {
+      background: $blue-1;
+    }
+
+    span {
+      font-size: small;
+      color: $blue-400;
+      margin-bottom: 0.25rem;
+    }
+  }
+}
