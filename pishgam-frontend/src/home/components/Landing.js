@@ -19,7 +19,9 @@ const Landing = () => {
             </p>
           </div>
           <div className={styles.btn}>
-            <Button>Know More</Button>
+            <Button variant="contained" color="primary">
+              Know More
+            </Button>
           </div>
         </div>
       </div>

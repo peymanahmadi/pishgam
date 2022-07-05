@@ -54,7 +54,9 @@ const MainNavigation = () => {
             <MegaMenuItem title="Company" data={CompanyData} />
             <div>
               <NavLink to="dashboard/">
-                <Button small>Things Dashboard</Button>
+                <Button variant="contained" color="primary">
+                  Things Dashboard
+                </Button>
               </NavLink>
             </div>
           </div>
@@ -65,10 +67,10 @@ const MainNavigation = () => {
             style={{ display: "flex", margin: "0.25rem 0rem", gap: "0.5rem" }}
           >
             {/* <MegaMenuItem title={<MdOutlineLanguage />} data={Languages} /> */}
-            <Button small inverse>
+            <Button variant="outlined" color="outlined-primary">
               <MdOutlineLanguage />
             </Button>
-            <Button small inverse>
+            <Button variant="outlined" color="outlined-primary">
               <FaUserCircle />
               Login
             </Button>
