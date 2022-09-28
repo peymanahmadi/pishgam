@@ -3,6 +3,8 @@
 .btn {
   cursor: pointer;
   border: transparent;
+  background: $blue-500;
+  color: $white;
   border-radius: $border-radius;
   padding: 0.375rem 0.75rem;
   box-shadow: $shadow-1;

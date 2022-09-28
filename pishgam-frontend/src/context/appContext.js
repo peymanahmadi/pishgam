@@ -53,10 +53,15 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN });
     try {
       const { data } = await axios.post(
-        `https://api.thingssolution.com/api/v1/auth/${endPoint}`,
+        `https://iot.thingssolution.com/api/v1/auth/${endPoint}`,
         // `/api/v1/auth/${endPoint}`,
         currentUser
       );
+      // const { data } = await axios.post(
+      //   `http://127.0.0.1:4475/api/v1/auth/${endPoint}`,
+      //   // `/api/v1/auth/${endPoint}`,
+      //   currentUser
+      // );
       // console.log(response);
       const { user, token } = data;
       dispatch({

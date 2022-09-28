@@ -34,8 +34,9 @@ const Dashboard = () => {
     setError(null);
     try {
       const response = await fetch(
-        "https://api.thingssolution.com/api/v1/things"
+        "https://iot.thingssolution.com/api/v1/things"
       );
+      // const response = await fetch("http://127.0.0.1:4475/api/v1/things");
       if (!response.ok) {
         throw new Error("Something went wrong");
       }

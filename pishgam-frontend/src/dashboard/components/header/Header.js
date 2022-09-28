@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <div className={styles.header}>
       <div className={styles.title}>
-        <h2>{props.title}</h2>
+        <h4>{props.title}</h4>
         <div className={styles.blob}>
           <Blob />
         </div>

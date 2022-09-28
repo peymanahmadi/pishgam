@@ -17,7 +17,7 @@ import SideNavigation from "./SideNavigation";
 import Backdrop from "../UIElements/Backdrop";
 import Button from "../FormElements/Button";
 
-import Logo from "../UIElements/Logo";
+import { Logo } from "../../../components";
 
 const MainNavigation = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -67,13 +67,13 @@ const MainNavigation = () => {
             style={{ display: "flex", margin: "0.25rem 0rem", gap: "0.5rem" }}
           >
             {/* <MegaMenuItem title={<MdOutlineLanguage />} data={Languages} /> */}
-            <Button variant="outlined" color="outlined-primary">
+            {/* <Button variant="outlined" color="outlined-primary">
               <MdOutlineLanguage />
             </Button>
             <Button variant="outlined" color="outlined-primary">
               <FaUserCircle />
               Login
-            </Button>
+            </Button> */}
             {/* <MegaMenuItem title={<FaUserCircle />} data={CompanyData} /> */}
           </div>
         </div>

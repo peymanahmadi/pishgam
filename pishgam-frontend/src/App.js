@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
+import { Batching } from "./pages/products";
 import Company from "./company/pages/Company";
 import Dashboard from "./dashboard/pages/Dashboard";
-import Home from "./home/pages/Home";
+import Home from "./pages/Home";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Register from "./user/Register";
 import ProtectedRoute from "./dashboard/ProtectedRoute";
-import "./assets/sass/style.scss";
+import "./assets/sass/main.scss";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/products/batchingsystem" element={<Batching />} />
           <Route path="/register" element={<Register />} />
           <Route path="/company/whoweare" element={<Company />} />
           <Route

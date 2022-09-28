@@ -15,6 +15,8 @@ const setThingValue = async (req, res, next) => {
   let value = req.query.value;
   let apiWriteKey = req.query.apikey;
 
+  console.log(req.query);
+
   let thing;
   try {
     thing = await Thing.findOne({ colName: title }, "apiWriteKey");
@@ -77,7 +79,7 @@ const getThingValueByDate = async (req, res, next) => {
     return next(error);
   }
 
-  res.io.emit("Hello", value);
+  // res.io.emit("Hello", value);
 
   res.json({
     thingValues: thingData.map((thing) => thing.toObject({ getters: true })),

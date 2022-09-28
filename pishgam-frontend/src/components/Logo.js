@@ -1,12 +1,12 @@
-import logo from "../../Images/Logo.png";
+import logo from "../assets/images/Logo.png";
 
 const Logo = ({ href }) => {
   return (
     <a href={href} className="logo">
       <img src={logo} alt="things solution" />
-      <h3>
+      <h4>
         Things <span>Solution</span>
-      </h3>
+      </h4>
     </a>
   );
 };

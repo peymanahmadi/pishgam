@@ -1,0 +1,19 @@
+@use "../abstracts/index" as *;
+
+.zigzag {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.white {
+  grid-template-columns: 1fr 2fr;
+  background: $white;
+}
+
+.grey {
+  grid-template-columns: 2fr 1fr;
+  background: $grey-50;
+}

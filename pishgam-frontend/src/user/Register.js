@@ -87,7 +87,10 @@ const Register = () => {
           value={values.password}
           handleChange={handleChange}
         />
-        <Button
+        <button className="btn btn-block" type="submit" disabled={isLoading}>
+          submit
+        </button>
+        {/* <Button
           type="submit"
           btnBlock
           shadow
@@ -95,7 +98,7 @@ const Register = () => {
           disabled={isLoading}
         >
           submit
-        </Button>
+        </Button> */}
         {/* <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
           <button

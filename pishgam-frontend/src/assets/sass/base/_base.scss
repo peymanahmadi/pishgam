@@ -1,0 +1,53 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+@use "../abstracts/index" as *;
+@use "../base/fonts" as bf;
+
+html {
+  font-size: 100%;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background-color;
+  line-height: 1.75;
+  color: $text-color;
+  font-family: bf.$FiraSans;
+}
+
+.english-font {
+  font-family: bf.$FiraSans;
+}
+
+.farsi-font {
+  font-family: bf.$Vazir;
+}
+
+.img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container {
+  width: $fluid-width;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.full-page {
+  min-height: 100vh;
+}

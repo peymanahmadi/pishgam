@@ -2,21 +2,20 @@
 
 .logo {
   display: flex;
-  // margin-left: 20px;
-  gap: 0.5rem;
-  text-decoration: none;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  min-width: 250px;
 
   img {
     width: 64px;
     height: 64px;
   }
 
-  h3 {
-    font-family: $Ubuntu;
+  h4 {
     color: $blue-700;
     font-weight: 500;
+    margin-bottom: 0;
     span {
       color: $blue-50;
     }
