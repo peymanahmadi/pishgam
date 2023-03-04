@@ -1,5 +1,6 @@
 import { FaWeight } from "react-icons/fa";
 import { RiUserHeartFill } from "react-icons/ri";
+import BatchingSystemSoftware from "../../assets/images/BatchingSystemSoftware.png";
 import {
   MdOutlineDashboard,
   MdAnalytics,
@@ -7,23 +8,26 @@ import {
   MdRule,
 } from "react-icons/md";
 import { Zigzag } from "../../components";
+import { Link } from "react-router-dom";
 
 const Batching = () => {
   return (
     <>
       <main className="batching">
         <section className="introduce">
-          <h3>Automatic Batching System</h3>
+          <h1>Automatic Batching System</h1>
           <p>A smart automation solution suitable for animal feed factories.</p>
-          <ul>
-            <li>accurate weighing</li>
-            <li>high speed</li>
-            <li>user friendly</li>
-            <li>online dashboard</li>
-            <li>useful reports</li>
-            <li>user access level</li>
-          </ul>
+          <button className="btn large">
+            <a href="https://batching.thingssolution.com">Batching Panel</a>
+          </button>
         </section>
+        <div>
+          <img
+            className="batching-monitor"
+            src={BatchingSystemSoftware}
+            alt=""
+          />
+        </div>
       </main>
 
       <section className="features-menu">

@@ -139,7 +139,7 @@ const updateThing = async (req, res, next) => {
     );
   }
 
-  const { title, description, categories, enabled, users } = req.body;
+  const { title, description, categories, enabled, users, colName } = req.body;
   const tid = req.params.tid;
 
   let thing;
@@ -158,6 +158,7 @@ const updateThing = async (req, res, next) => {
   thing.categories = categories;
   thing.enabled = enabled;
   thing.users = users;
+  thing.colName = colName;
 
   try {
     thing = await thing.save();

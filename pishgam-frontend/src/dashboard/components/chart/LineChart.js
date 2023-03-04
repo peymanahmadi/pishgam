@@ -114,6 +114,8 @@ const LineChart = (props) => {
           colors: "#8e8da4",
         },
       },
+      min: 0,
+      max: 25000,
     },
 
     legend: {

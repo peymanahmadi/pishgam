@@ -26,14 +26,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          {/* <main> */}
-          {/* <Route path="/" element={<Home />} />
-        <Route path="/products/batchingsystem" element={<BatchingSystem />} />
-        <Route path="/products/weighingsystem" element={<WeighingSystem />} />
-        <Route path="/projects/cowdetection" element={<CowDetection />} />
-        <Route path="/company/whoweare" element={<WhoWeAre />} />
-        <Route path="/dashboard" element={<Dashboard />} /> */}
-
           <Route
             path="*"
             element={
